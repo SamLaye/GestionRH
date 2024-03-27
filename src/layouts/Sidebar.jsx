@@ -15,7 +15,7 @@ function Sidebar() {
     <aside id="sidebar">
       <div className="sidebar-title">
         <div className="sidebar-brand">
-          <BsCart3 className="icon" /> Shop
+          <BsCart3 className="icon" /> Gestion RH
         </div>
         <span className="icon close_icon">X</span>
       </div>
