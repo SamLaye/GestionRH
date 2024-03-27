@@ -1,12 +1,12 @@
 import './App.css';
-import Header from './Header';
-import Home from './Home';
-import Sidebar from './Sidebar';
+import Navbar from './layouts/Navbar';
+import Home from './pages/Home';
+import Sidebar from './layouts/Sidebar';
 
 function App() {
   return (
       <div className='grid-container'>
-        <Header />
+        <Navbar />
         <Sidebar />
         <Home />
       </div>
