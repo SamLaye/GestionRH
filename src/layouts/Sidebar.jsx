@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import {
   BsCart3,
   BsGrid1X2Fill,
@@ -20,11 +21,13 @@ function Sidebar() {
       </div>
 
       <ul className="sidebar-list">
-        <li className="sidebar-list-item">
-          <a href="">
-            <BsGrid1X2Fill className="icon" /> Dashbord
-          </a>
-        </li>
+        <NavLink style={{ textDecoration: "none" }} to="/">
+          <li className="sidebar-list-item">
+            <a href="">
+              <BsGrid1X2Fill className="icon" /> Dashbord
+            </a>
+          </li>
+        </NavLink>
         <li className="sidebar-list-item">
           <a href="">
             <BsFillArchiveFill className="icon" /> Employés
