@@ -156,13 +156,13 @@ body {
 .card-inner > .card_icon {
   font-size: 25px;
 }
-/* .charts {
+.charts {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
   margin-top: 60px;
   height: 300px;
-} */
+}
 
 /* ======================================= */
 

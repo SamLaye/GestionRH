@@ -7,7 +7,6 @@ import {
   BsPeopleFill,
   BsListCheck,
   BsMenuButtonWideFill,
-  BsFillGearFill,
 } from "react-icons/bs";
 
 function Sidebar() {
