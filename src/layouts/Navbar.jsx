@@ -9,7 +9,7 @@ import {
 
 function Navbar() {
   return (
-    <header className="header">
+    <>
       <div className="menu-icon">
         <BsJustify className="icon" />
       </div>
@@ -21,7 +21,7 @@ function Navbar() {
         <BsFillEnvelopeFill className="icon" />
         <BsPersonCircle className="icon" />
       </div>
-    </header>
+    </>
   );
 }
 

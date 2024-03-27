@@ -10,7 +10,7 @@ function Home() {
   //
 
   return (
-    <main className="main-container">
+    <>
       <div className="main-title">
         <h3>DASHBORD</h3>
       </div>
@@ -44,7 +44,7 @@ function Home() {
           <h1>42</h1>
         </div>
       </div>
-    </main>
+    </>
   );
 }
 

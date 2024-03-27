@@ -11,7 +11,7 @@ import {
 
 function Sidebar() {
   return (
-    <aside id="sidebar">
+    <>
       <div className="sidebar-title">
         <div className="sidebar-brand">
           <BsCart3 className="icon" /> Gestion RH
@@ -51,7 +51,7 @@ function Sidebar() {
           </a>
         </li>
       </ul>
-    </aside>
+    </>
   );
 }
 
