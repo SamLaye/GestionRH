@@ -4,7 +4,7 @@ function Employes() {
   return (
     <div>
       <div className="main-title" style={{ marginBottom: "30px" }}>
-        <h3 style={{ textTransform: "uppercase" }}>EMPLOYéS </h3>
+        <h3 style={{ textTransform: "uppercase" }}>EMPLOYéS</h3>
       </div>
 
       <div>
