@@ -5,7 +5,7 @@ function Presence() {
     <div>
       <div className="main-title">
         <h3>PRESENCE</h3>
-      </div>{" "}
+      </div>
     </div>
   );
 }

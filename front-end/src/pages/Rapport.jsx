@@ -5,7 +5,7 @@ function Rapport() {
     <div>
       <div className="main-title">
         <h3>RAPPORT</h3>
-      </div>{" "}
+      </div>
     </div>
   );
 }

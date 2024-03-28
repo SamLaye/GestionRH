@@ -22,7 +22,7 @@ function App() {
              <Route path='employes' element={<Employes/>}/>
              <Route path='conges' element={<Conges/>}/>
              <Route path='presence' element={<Presence />}/>
-             <Route path='/payment' element={<Paie />}/>
+             <Route path='payment' element={<Paie />}/>
              <Route path='rapport' element={<Rapport />}/>
           </Routes>            
         </Template>

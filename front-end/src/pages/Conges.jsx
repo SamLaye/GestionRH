@@ -5,7 +5,7 @@ function Conges() {
     <div>
       <div className="main-title">
         <h3>CONGES</h3>
-      </div>{" "}
+      </div>
     </div>
   );
 }
