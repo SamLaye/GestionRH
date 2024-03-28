@@ -8,11 +8,11 @@ function Notes() {
       </div>
 
       <div>
-        <br />R
-        <br />
-        <br />
-        <br />A
-        <br />
+        <br />N
+        <br />o
+        <br />t
+        <br />e
+        <br />s
       </div>
     </div>
   );
