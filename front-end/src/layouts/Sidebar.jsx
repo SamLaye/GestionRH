@@ -31,22 +31,22 @@ function Sidebar() {
             <BsFillArchiveFill className="icon" /> Employés
           </li>
         </NavLink>
-        <NavLink to="employes" style={{ textDecoration: "none" }}>
+        <NavLink to="conges" style={{ textDecoration: "none" }}>
           <li className="sidebar-list-item">
             <BsFillGrid3X3GapFill className="icon" /> Congés
           </li>
         </NavLink>
-        <NavLink to="employes" style={{ textDecoration: "none" }}>
+        <NavLink to="presence" style={{ textDecoration: "none" }}>
           <li className="sidebar-list-item">
             <BsPeopleFill className="icon" /> Présence
           </li>
         </NavLink>
-        <NavLink to="employes" style={{ textDecoration: "none" }}>
+        <NavLink to="payment" style={{ textDecoration: "none" }}>
           <li className="sidebar-list-item">
             <BsListCheck className="icon" /> Paie
           </li>
         </NavLink>
-        <NavLink to="employes" style={{ textDecoration: "none" }}>
+        <NavLink to="rapport" style={{ textDecoration: "none" }}>
           <li className="sidebar-list-item">
             <BsMenuButtonWideFill className="icon" /> Rapports
           </li>
