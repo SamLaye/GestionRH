@@ -20,7 +20,7 @@ function Home() {
             <h3>EMPLOYES</h3>
             <GrUserWorker className="card_icon" />
           </div>
-          <h1>300</h1>
+          <h1>70</h1>
         </div>
         <div className="card">
           <div className="card-inner">
@@ -34,7 +34,7 @@ function Home() {
             <h3>PRESENTS</h3>
             <BsPeopleFill className="card_icon" />
           </div>
-          <h1>33</h1>
+          <h1>53</h1>
         </div>
         <div className="card">
           <div className="card-inner">
