@@ -23,36 +23,34 @@ function Sidebar() {
       <ul className="sidebar-list">
         <NavLink style={{ textDecoration: "none" }} to="/">
           <li className="sidebar-list-item">
-            <a href="#">
-              <BsGrid1X2Fill className="icon" /> Dashbord
-            </a>
+            <BsGrid1X2Fill className="icon" /> Dashbord
           </li>
         </NavLink>
-        <li className="sidebar-list-item">
-          <a href="#">
+        <NavLink to="employes" style={{ textDecoration: "none" }}>
+          <li className="sidebar-list-item">
             <BsFillArchiveFill className="icon" /> Employés
-          </a>
-        </li>
-        <li className="sidebar-list-item">
-          <a href="#">
+          </li>
+        </NavLink>
+        <NavLink to="employes" style={{ textDecoration: "none" }}>
+          <li className="sidebar-list-item">
             <BsFillGrid3X3GapFill className="icon" /> Congés
-          </a>
-        </li>
-        <li className="sidebar-list-item">
-          <a href="#">
+          </li>
+        </NavLink>
+        <NavLink to="employes" style={{ textDecoration: "none" }}>
+          <li className="sidebar-list-item">
             <BsPeopleFill className="icon" /> Présence
-          </a>
-        </li>
-        <li className="sidebar-list-item">
-          <a href="#">
+          </li>
+        </NavLink>
+        <NavLink to="employes" style={{ textDecoration: "none" }}>
+          <li className="sidebar-list-item">
             <BsListCheck className="icon" /> Paie
-          </a>
-        </li>
-        <li className="sidebar-list-item">
-          <a href="#">
+          </li>
+        </NavLink>
+        <NavLink to="employes" style={{ textDecoration: "none" }}>
+          <li className="sidebar-list-item">
             <BsMenuButtonWideFill className="icon" /> Rapports
-          </a>
-        </li>
+          </li>
+        </NavLink>
       </ul>
     </>
   );
