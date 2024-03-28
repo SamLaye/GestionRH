@@ -6,7 +6,6 @@ import Navbar from './layouts/Navbar';
 import Home from './pages/Home';
 import Sidebar from './layouts/Sidebar';
 import Template from './layouts/Template';
-import Essaie from './components/Essaie';
 import Employes from './pages/Employes';
 
 function App() {

@@ -23,33 +23,33 @@ function Sidebar() {
       <ul className="sidebar-list">
         <NavLink style={{ textDecoration: "none" }} to="/">
           <li className="sidebar-list-item">
-            <a href="">
+            <a href="#">
               <BsGrid1X2Fill className="icon" /> Dashbord
             </a>
           </li>
         </NavLink>
         <li className="sidebar-list-item">
-          <a href="">
+          <a href="#">
             <BsFillArchiveFill className="icon" /> Employés
           </a>
         </li>
         <li className="sidebar-list-item">
-          <a href="">
+          <a href="#">
             <BsFillGrid3X3GapFill className="icon" /> Congés
           </a>
         </li>
         <li className="sidebar-list-item">
-          <a href="">
+          <a href="#">
             <BsPeopleFill className="icon" /> Présence
           </a>
         </li>
         <li className="sidebar-list-item">
-          <a href="">
+          <a href="#">
             <BsListCheck className="icon" /> Paie
           </a>
         </li>
         <li className="sidebar-list-item">
-          <a href="">
+          <a href="#">
             <BsMenuButtonWideFill className="icon" /> Rapports
           </a>
         </li>
