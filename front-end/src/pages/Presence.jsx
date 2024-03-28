@@ -4,7 +4,7 @@ function Presence() {
   return (
     <div>
       <div className="main-title">
-        <h3>PRESENCE</h3>
+        <h3 style={{ textTransform: "uppercase" }}>présence</h3>
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ function Conges() {
   return (
     <div>
       <div className="main-title">
-        <h3>CONGES</h3>
+        <h3 style={{ textTransform: "uppercase" }}>CONGéS</h3>
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ function Rapport() {
   return (
     <div>
       <div className="main-title">
-        <h3>RAPPORT</h3>
+        <h3 style={{ textTransform: "uppercase" }}>RAPPORT</h3>
       </div>
     </div>
   );

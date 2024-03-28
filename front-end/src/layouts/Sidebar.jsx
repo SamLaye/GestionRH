@@ -1,16 +1,39 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import {
-  BsCart3,
-  BsGrid1X2Fill,
-  BsFillArchiveFill,
-  BsFillGrid3X3GapFill,
-  BsPeopleFill,
-  BsListCheck,
-  BsMenuButtonWideFill,
-} from "react-icons/bs";
+import { BsCart3, BsGrid1X2Fill, BsPeopleFill } from "react-icons/bs";
+import { GrUserWorker } from "react-icons/gr";
+import { RiBankFill } from "react-icons/ri";
+import { MdHolidayVillage } from "react-icons/md";
+import { TbReportAnalytics } from "react-icons/tb";
 
 function Sidebar() {
+  const admin = [
+    {
+      path: "employes",
+      icone: <GrUserWorker className="icon" />,
+      _label: "Employés",
+    },
+    {
+      path: "conges",
+      icone: <MdHolidayVillage className="icon" />,
+      _label: "Congés",
+    },
+    {
+      path: "presence",
+      icone: <BsPeopleFill className="icon" />,
+      _label: "Présence",
+    },
+    {
+      path: "payment",
+      icone: <RiBankFill className="icon" />,
+      _label: "Paie",
+    },
+    {
+      path: "rapport",
+      icone: <TbReportAnalytics className="icon" />,
+      _label: "Rapports",
+    },
+  ];
   return (
     <>
       <div className="sidebar-title">
@@ -26,31 +49,13 @@ function Sidebar() {
             <BsGrid1X2Fill className="icon" /> Dashbord
           </li>
         </NavLink>
-        <NavLink to="employes" style={{ textDecoration: "none" }}>
-          <li className="sidebar-list-item">
-            <BsFillArchiveFill className="icon" /> Employés
-          </li>
-        </NavLink>
-        <NavLink to="conges" style={{ textDecoration: "none" }}>
-          <li className="sidebar-list-item">
-            <BsFillGrid3X3GapFill className="icon" /> Congés
-          </li>
-        </NavLink>
-        <NavLink to="presence" style={{ textDecoration: "none" }}>
-          <li className="sidebar-list-item">
-            <BsPeopleFill className="icon" /> Présence
-          </li>
-        </NavLink>
-        <NavLink to="payment" style={{ textDecoration: "none" }}>
-          <li className="sidebar-list-item">
-            <BsListCheck className="icon" /> Paie
-          </li>
-        </NavLink>
-        <NavLink to="rapport" style={{ textDecoration: "none" }}>
-          <li className="sidebar-list-item">
-            <BsMenuButtonWideFill className="icon" /> Rapports
-          </li>
-        </NavLink>
+        {admin.map((item) => (
+          <NavLink to={item.path} style={{ textDecoration: "none" }}>
+            <li className="sidebar-list-item">
+              {item.icone} {item._label}
+            </li>
+          </NavLink>
+        ))}
       </ul>
     </>
   );

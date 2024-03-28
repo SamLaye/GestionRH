@@ -1,10 +1,10 @@
 import React from "react";
 import {
-  BsFillArchiveFill,
   BsFillGrid3X3GapFill,
   BsPeopleFill,
   BsFillBellFill,
 } from "react-icons/bs";
+import { GrUserWorker } from "react-icons/gr";
 
 function Home() {
   //
@@ -18,7 +18,7 @@ function Home() {
         <div className="card">
           <div className="card-inner">
             <h3>EMPLOYES</h3>
-            <BsFillArchiveFill className="card_icon" />
+            <GrUserWorker className="card_icon" />
           </div>
           <h1>300</h1>
         </div>
@@ -31,7 +31,7 @@ function Home() {
         </div>
         <div className="card">
           <div className="card-inner">
-            <h3>CUSTUMERS</h3>
+            <h3>PRESENTS</h3>
             <BsPeopleFill className="card_icon" />
           </div>
           <h1>33</h1>
