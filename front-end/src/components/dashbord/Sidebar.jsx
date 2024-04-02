@@ -6,6 +6,8 @@ import { RiBankFill } from "react-icons/ri";
 import { MdHolidayVillage } from "react-icons/md";
 import { TbReportAnalytics } from "react-icons/tb";
 import { FaTasks } from "react-icons/fa";
+import { IoTimeOutline } from "react-icons/io5";
+import { PiSignOutBold } from "react-icons/pi";
 
 function Sidebar() {
   const admin = [
@@ -44,8 +46,17 @@ function Sidebar() {
       icone: <TbReportAnalytics className="icon" />,
       _label: "Rapports",
     },
+    {
+      icone: <PiSignOutBold className="icon" />,
+      _label: "Déconnexion",
+    },
   ];
   const employee = [
+    {
+      path: "/",
+      icone: <BsGrid1X2Fill className="icon" />,
+      _label: "Tableau de Bord",
+    },
     {
       path: "taches",
       icone: <FaTasks className="icon" />,
@@ -56,9 +67,18 @@ function Sidebar() {
       icone: <MdHolidayVillage className="icon" />,
       _label: "Demande de congés",
     },
+    {
+      path: "horaire_présences",
+      icone: <IoTimeOutline className="icon" />,
+      _label: "Horaires et Présences",
+    },
+    {
+      icone: <PiSignOutBold className="icon" />,
+      _label: "Déconnexion",
+    },
   ];
 
-  const [isAdmin, setIsAdmin] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   return (
     <>
