@@ -78,7 +78,7 @@ function Sidebar() {
     },
   ];
 
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isAdmin, setisAdmin] = useState(false);
 
   return (
     <>
@@ -90,19 +90,19 @@ function Sidebar() {
       <ul className="sidebar-list">
         {isAdmin
           ? admin.map((item) => (
-              <NavLink to={item.path} style={{ textDecoration: "none" }}>
-                <li className="sidebar-list-item">
-                  {item.icone} {item._label}
-                </li>
-              </NavLink>
-            ))
+            <NavLink to={item.path} style={{ textDecoration: "none" }}>
+              <li className="sidebar-list-item">
+                {item.icone} {item._label}
+              </li>
+            </NavLink>
+          ))
           : employee.map((item) => (
-              <NavLink to={item.path} style={{ textDecoration: "none" }}>
-                <li className="sidebar-list-item">
-                  {item.icone} {item._label}
-                </li>
-              </NavLink>
-            ))}
+            <NavLink to={item.path} style={{ textDecoration: "none" }}>
+              <li className="sidebar-list-item">
+                {item.icone} {item._label}
+              </li>
+            </NavLink>
+          ))}
       </ul>
     </>
   );
