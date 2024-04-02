@@ -102,7 +102,7 @@ body {
 }
 
 .sidebar-list .active{
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.2) !important;
 }
 
 .sidebar-list-item {
@@ -203,4 +203,8 @@ body {
   .sidebar-title > span {
     display: inline;
   }
+ }
+
+ .custom-material-table {
+   background-color: red !important;
  }
