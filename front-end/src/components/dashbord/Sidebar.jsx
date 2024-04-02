@@ -78,7 +78,7 @@ function Sidebar() {
     },
   ];
 
-  const [isAdmin, setisAdmin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(true);
 
   return (
     <>
