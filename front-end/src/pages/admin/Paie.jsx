@@ -9,7 +9,7 @@ function Paie() {
         <h3 style={{ textTransform: "uppercase" }}>PAYMENT </h3>
       </div>
 
-      <div>
+      <div className="payment">
         <h3>Payment / Fiche de paiement</h3>
         <div style={{ display: "flex" }}>
           <div style={{ width: "50%" }}>
