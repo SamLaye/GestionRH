@@ -204,6 +204,34 @@ body {
 
 /* ======================================= */
 
+/* =================================
+        AUTHENTIFICATION
+   ================================ */
+#connexion, #inscription{
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  background-color: #1d2634;
+}
+#connexion .auth, #inscription .auth{
+  box-shadow: -0px 4px 5px 2px rgba(0, 0, 0, 0.35);
+  background-color: #263043;
+  /* border: 1px solid rgba(0, 0, 0); */
+  padding: 40px 30px;
+  border-radius: 5px;
+  width: 30rem;
+  margin: auto;
+}
+#connexion .btnSubmit, 
+#inscription .btnSubmit{
+  background-color: #1d2634;
+  color: #fff;
+  width: 100%;
+}
+
+
+/* ======================================= */
+
  /* <= 992px */
  @media screen and (max-width: 992px){
   .grid-container {

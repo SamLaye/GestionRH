@@ -12,13 +12,11 @@ import Paie from './pages/admin/Paie';
 import Presence from './pages/admin/Presence';
 import Rapport from './pages/admin/Rapport';
 import Notes from './pages/admin/Notes';
-import Connexion from './pages/connexion/Connexion';
 
 function App() {
   return (
     <BrowserRouter>
-      <Connexion/>
-      {/* <Template sidebar={<Sidebar/>} navbar={<Navbar/>}>
+      <Template sidebar={<Sidebar/>} navbar={<Navbar/>}>
         <Routes>
             <Route index element={<Home/> }/>
             <Route path='employes' element={<Employes/>}/>
@@ -28,7 +26,7 @@ function App() {
             <Route path='payment' element={<Paie />}/>
             <Route path='rapport' element={<Rapport />}/>
         </Routes>            
-      </Template> */}
+      </Template>
     </BrowserRouter>  
   );
 }
