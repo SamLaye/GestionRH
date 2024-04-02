@@ -135,14 +135,30 @@ body {
    ================================ */
 .main-container {
   grid-area: main;
+  /* font-size: 100px !important; */
   color: #9e9ea4 !important;
   overflow-y: auto;
   padding: 20px 20px;
   color: rgba(255, 255, 255, 0.95);
 }
-.main-.main-title {
+.main-container .main-title {
   display: flex;
   justify-content: space-between;
+}
+.main-container .main-title h3, 
+.main-container .payment h3, 
+.main-container .payment h4, 
+.main-cards .card .card-inner h3 {
+  font-size: 1.17em !important;
+  margin-block-start: 1em !important;
+  margin-block-end: 1em !important;
+  margin-inline-start: 0px !important;
+  margin-inline-end: 0px !important;
+  font-weight: bold !important;
+  unicode-bidi: isolate !important;
+}
+.main-container .payment h4{
+  font-size: 1.10em !important;
 }
 .main-cards {
   display: grid;
@@ -154,6 +170,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  color: #fff !important;
   padding: 8px 15px;
   border-radius: 5px;
 }
