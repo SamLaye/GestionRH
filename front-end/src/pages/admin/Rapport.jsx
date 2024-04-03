@@ -17,7 +17,7 @@ function Rapport() {
 
       <RapportTemplate>
         <Routes>
-          <Route path="sssssss" element={<PresenceEmp />} />
+          <Route path="rapport/presence" element={<PresenceEmp />} />
           <Route path="rapport/demande-conges" element={<DemandeCg />} />
           <Route path="rapport/solde-conges" element={<SoldeCg />} />
           <Route path="rapport/journal-paie" element={<JournalPaie />} />

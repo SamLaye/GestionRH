@@ -24,7 +24,7 @@ function App() {
             <Route path='presence' element={<Presence />}/>
             <Route path='notes' element={<Notes />}/>
             <Route path='payment' element={<Paie />}/>
-            <Route path='rapport' element={<Rapport />}/>
+            <Route path='rapports' element={<Rapport />}/>
         </Routes>            
       </Template>
     </BrowserRouter>  

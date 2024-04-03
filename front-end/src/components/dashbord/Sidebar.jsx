@@ -42,7 +42,7 @@ function Sidebar() {
       _label: "Paie",
     },
     {
-      path: "rapport",
+      path: "rapports",
       icone: <TbReportAnalytics className="icon" />,
       _label: "Rapports",
     },
