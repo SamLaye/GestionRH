@@ -148,7 +148,8 @@ body {
 .main-container .main-title h3, 
 .main-container .payment h3, 
 .main-container .payment h4, 
-.main-cards .card .card-inner h3 {
+.main-cards .card .card-inner h3,
+.card-inner h1, .card-inner h3{
   font-size: 1.17em !important;
   margin-block-start: 1em !important;
   margin-block-end: 1em !important;
@@ -156,6 +157,10 @@ body {
   margin-inline-end: 0px !important;
   font-weight: bold !important;
   unicode-bidi: isolate !important;
+}
+.card-inner h1,
+.card-inner h3{
+  font-size: 1.20em !important;
 }
 .main-container .payment h4{
   font-size: 1.10em !important;
