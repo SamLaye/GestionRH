@@ -12,7 +12,25 @@ import Paie from './pages/admin/Paie';
 import Presence from './pages/admin/Presence';
 import Rapport from './pages/admin/Rapport';
 import Notes from './pages/admin/Notes';
+import { PendingLeaves } from './components/CongesComponents/PendingLeaves';
+import { ApprovedLeaves } from './components/CongesComponents/ApprovedLeaves';
+import TotalLeaves from './components/CongesComponents/TotalLeaves';
+import AddEmployees from './components/CongesComponents/AddEmployees';
+import ViewEmployees from './components/CongesComponents/ViewEmployees';
 
+const leavesData = [
+  { id: 1, name: 'Liam', department: 'Development', date: '2021-09-09', reason: 'THIS IS A DEMO TEST', status: 'Pending' },
+  { id: 2, name: 'Cory B Puente', department: 'UX', date: '2021-07-03', reason: 'Not feeling well, need to quarantine myself!', status: 'Approved' },
+  { id: 3, name: 'Mark Lail', department: 'Customer Support', date: '2021-07-04', reason: "To attend my friend's funeral", status: 'Pending' },
+  { id: 4, name: 'Patricia S Caldwell', department: 'Marketing', date: '2021-07-07', reason: 'Suffered from an accident.', status: 'Approved' }
+];
+
+const approveLeave = (id) => {
+  // Cette fonction devrait mettre à jour l'état ou faire une requête au serveur
+  // Pour cet exemple, nous allons juste afficher un message dans la console
+  console.log(`Leave with ID ${id} approved`);
+  // Mettez à jour votre état ou base de données ici
+};
 function App() {
   return (
     <BrowserRouter>
@@ -20,7 +38,13 @@ function App() {
         <Routes>
             <Route index element={<Home/> }/>
             <Route path='employes' element={<Employes/>}/>
-            <Route path='conges' element={<Conges/>}/>
+            <Route path='conges' element={<Conges leavesData={leavesData} approveLeave={approveLeave}/>}>
+               <Route index element={<PendingLeaves  approveLeave={approveLeave}  leavesData={leavesData} />} />
+               <Route path="approved-leaves" element={<ApprovedLeaves approveLeave={approveLeave} leavesData={leavesData} />} />
+               <Route path="total-leaves" element={<TotalLeaves approveLeave={approveLeave} leavesData={leavesData} />} />
+               <Route path="add-employees" element={<AddEmployees approveLeave={approveLeave} leavesData={leavesData} />} />
+               <Route path="view-employees" element={<ViewEmployees approveLeave={approveLeave} leavesData={leavesData} />} />
+            </Route>
             <Route path='presence' element={<Presence />}/>
             <Route path='notes' element={<Notes />}/>
             <Route path='payment' element={<Paie />}/>
