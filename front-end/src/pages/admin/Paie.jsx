@@ -9,7 +9,7 @@ function Paie() {
         <h3 style={{ textTransform: "uppercase" }}>PAYMENT </h3>
       </div>
 
-      <div>
+      <div className="payment">
         <h3>Payment / Fiche de paiement</h3>
         <div style={{ display: "flex" }}>
           <div style={{ width: "50%" }}>
@@ -18,10 +18,10 @@ function Paie() {
               style={{
                 display: "flex",
                 justifyContent: "space-between",
-                margin: "10px 5px",
+                margin: "10px 12px",
               }}
             >
-              <label>Employé</label>
+              <label style={{ color: "#fff" }}>Employé</label>
               <select
                 id="employes"
                 style={{
@@ -41,10 +41,10 @@ function Paie() {
               style={{
                 display: "flex",
                 justifyContent: "space-between",
-                margin: "10px 5px",
+                margin: "10px 12px",
               }}
             >
-              <label>Mois</label>
+              <label style={{ color: "#fff" }}>Mois</label>
               <input
                 type="text"
                 style={{
@@ -59,40 +59,40 @@ function Paie() {
               style={{
                 display: "flex",
                 justifyContent: "space-between",
-                margin: "10px 5px",
+                margin: "10px 12px",
               }}
             >
-              <label>Du</label>
+              <label style={{ color: "#fff" }}>Du</label>
               <input type="date" style={{ width: "60%", padding: "10px" }} />
             </div>
             <div
               style={{
                 display: "flex",
                 justifyContent: "space-between",
-                margin: "10px 5px",
+                margin: "10px 12px",
               }}
             >
-              <label>Au</label>
+              <label style={{ color: "#fff" }}>Au</label>
               <input type="date" style={{ width: "60%", padding: "10px" }} />
             </div>
             <div
               style={{
                 display: "flex",
                 justifyContent: "space-between",
-                margin: "10px 5px",
+                margin: "10px 12px",
               }}
             >
-              <label>date d'embauche</label>
+              <label style={{ color: "#fff" }}>date d'embauche</label>
               <input type="date" style={{ width: "60%", padding: "10px" }} />
             </div>
             <div
               style={{
                 display: "flex",
                 justifyContent: "space-between",
-                margin: "10px 5px",
+                margin: "10px 12px",
               }}
             >
-              <label>Salaire de base</label>
+              <label style={{ color: "#fff" }}>Salaire de base</label>
               <input type="text" style={{ width: "60%", padding: "10px" }} />
             </div>
           </div>
@@ -103,73 +103,73 @@ function Paie() {
               style={{
                 display: "flex",
                 justifyContent: "space-between",
-                margin: "10px 5px",
+                margin: "10px 12px",
               }}
             >
-              <label style={{ width: "50%" }}>Situation familiale</label>
-              <input type="text" style={{ padding: "10px" }} />
+              <label style={{ color: "#fff" }}>Situation familiale</label>
+              <input type="text" style={{ width: "60%", padding: "10px" }} />
             </div>
             <div
               style={{
                 display: "flex",
                 justifyContent: "space-between",
-                margin: "10px 5px",
+                margin: "10px 12px",
               }}
             >
-              <label style={{ width: "50%" }}>Enfants à charge</label>
-              <input type="text" style={{ padding: "10px" }} />
+              <label style={{ color: "#fff" }}>Enfants à charge</label>
+              <input type="text" style={{ width: "60%", padding: "10px" }} />
             </div>
             <div
               style={{
                 display: "flex",
                 justifyContent: "space-between",
-                margin: "10px 5px",
+                margin: "10px 12px",
               }}
             >
-              <label style={{ width: "50%" }}>Taux CIMR</label>
-              <input type="text" style={{ padding: "10px" }} />
+              <label style={{ color: "#fff" }}>Taux CIMR</label>
+              <input type="text" style={{ width: "60%", padding: "10px" }} />
             </div>
             <div
               style={{
                 display: "flex",
                 justifyContent: "space-between",
-                margin: "10px 5px",
+                margin: "10px 12px",
               }}
             >
-              <label style={{ width: "50%" }}>Taux Assistance Maladie</label>
-              <input type="text" style={{ padding: "10px" }} />
+              <label style={{ color: "#fff" }}>Taux Assistance Maladie</label>
+              <input type="text" style={{ width: "60%", padding: "10px" }} />
             </div>
             <div
               style={{
                 display: "flex",
                 justifyContent: "space-between",
-                margin: "10px 5px",
+                margin: "10px 12px",
               }}
             >
-              <label style={{ width: "50%" }}>
+              <label style={{ color: "#fff" }}>
                 Assurance Retraite Complémentaire
               </label>
-              <input type="text" style={{ padding: "10px" }} />
+              <input type="text" style={{ width: "60%", padding: "10px" }} />
             </div>
             <div
               style={{
                 display: "flex",
                 justifyContent: "space-between",
-                margin: "10px 5px",
+                margin: "10px 12px",
               }}
             >
-              <label style={{ width: "50%" }}>Intérert crédit logement</label>
-              <input type="text" style={{ padding: "10px" }} />
+              <label style={{ color: "#fff" }}>Intérert crédit logement</label>
+              <input type="text" style={{ width: "60%", padding: "10px" }} />
             </div>
             <div
               style={{
                 display: "flex",
                 justifyContent: "space-between",
-                margin: "10px 5px",
+                margin: "10px 12px",
               }}
             >
-              <label style={{ width: "50%" }}>Retenue pret</label>
-              <input type="text" style={{ padding: "10px" }} />
+              <label style={{ color: "#fff" }}>Retenue pret</label>
+              <input type="text" style={{ width: "60%", padding: "10px" }} />
             </div>
           </div>
         </div>
