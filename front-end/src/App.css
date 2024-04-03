@@ -148,7 +148,8 @@ body {
 .main-container .main-title h3, 
 .main-container .payment h3, 
 .main-container .payment h4, 
-.main-cards .card .card-inner h3 {
+.main-cards .card .card-inner h3,
+.card-inner h1, .card-inner h3{
   font-size: 1.17em !important;
   margin-block-start: 1em !important;
   margin-block-end: 1em !important;
@@ -156,6 +157,10 @@ body {
   margin-inline-end: 0px !important;
   font-weight: bold !important;
   unicode-bidi: isolate !important;
+}
+.card-inner h1,
+.card-inner h3{
+  font-size: 1.20em !important;
 }
 .main-container .payment h4{
   font-size: 1.10em !important;
@@ -166,7 +171,7 @@ body {
   gap: 20px;
   margin: 15px 0;
 }
-.card {
+._card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -174,16 +179,16 @@ body {
   padding: 8px 15px;
   border-radius: 5px;
 }
-.card:first-child {
+._card:first-child {
   background-color: #2962ff;
 }
-.card:nth-child(2) {
+._card:nth-child(2) {
   background-color: #ff6d00;
 }
-.card:nth-child(3) {
+._card:nth-child(3) {
   background-color: #2e7d32;
 }
-.card:nth-child(4) {
+._card:nth-child(4) {
   background-color: #d50000;
 }
 .card-inner {
