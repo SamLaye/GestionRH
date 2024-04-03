@@ -24,7 +24,10 @@ function AjoutEmploye({ onEmployeeAdded }) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  
+
   const handleSubmit = () => {
+    
     onEmployeeAdded(employeeDetails);
     // Reset form fields and close modal
     setEmployeeDetails({
