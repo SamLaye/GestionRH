@@ -1,6 +1,7 @@
 // TotalLeaves.js
 import React from 'react';
-import './NestedCom.css'; 
+import './totalleaves.css'; 
+// import './NestedCom.css'; 
 
 const TotalLeaves = ({ leavesData }) => {
   return (

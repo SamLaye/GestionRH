@@ -1,5 +1,5 @@
 import React from 'react';
-import  './NestedCom.css'
+import  './pendingleaves.css'
 
 const PendingLeaves = ({ leavesData, approveLeave }) => {
   // Filtre les données pour obtenir seulement les congés en attente

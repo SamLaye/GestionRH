@@ -1,0 +1,116 @@
+.total-leaves-modal {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    color: #fff; 
+    /* background: #7c7d72 !important;  */
+    background: #03111e!important; 
+    padding: 20px;
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    max-width: 100%;
+    overflow-x: auto; 
+  }
+  
+  h2 {
+    text-align: center;
+    color: #005792 !important; /* A color that matches your brand */
+    margin-bottom: 24px;
+  }
+  
+  .total-leaves-table {
+    width: 100%;
+    border-collapse: collapse; /* Remove space between borders */
+    margin: 0;
+    padding: 0;
+  }
+  
+  .total-leaves-table th,
+  .total-leaves-table td {
+    text-align: left;
+    padding: 12px; /* Spacing within cells */
+    border-bottom: 1px solid #ddd !important; /* Light borders for separation without heaviness */
+  }
+  
+  .total-leaves-table th {
+    background-color: #005792 !important; /* Header background */
+    color: white !important; /* Header text color */
+  }
+  
+  .total-leaves-table tbody tr:nth-child(odd) {
+    background-color: #6dacc9; /* Zebra striping for rows */
+  }
+  
+  .total-leaves-table tbody tr:hover {
+    background-color: #ddd; /* Hover state for rows */
+  }
+  
+  /* Clear style for interactive elements */
+  .status-tag {
+    padding: .5em 1em;
+    text-transform: capitalize;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+  }
+  
+  /* Color-coded status tags */
+  .status-tag.approved {
+    background-color: #4CAF50;
+  }
+  
+  .status-tag.pending {
+    background-color: #FF9800;
+  }
+  
+  .status-tag.denied {
+    background-color: #F44336;
+  }
+
+  
+  @media screen and (max-width: 768px) {
+    .total-leaves-table,
+    .total-leaves-table thead,
+    .total-leaves-table tbody,
+    .total-leaves-table th,
+    .total-leaves-table td,
+    .total-leaves-table tr {
+      display: block !important; 
+    }
+  
+    .total-leaves-table thead tr {
+      position: absolute !important;
+      top: -9999px !important;
+      left: -9999px !important; /* Hide the header on small screens */
+    }
+  
+    .total-leaves-table tr {
+      margin-bottom: 1rem !important;
+    }
+  
+    .total-leaves-table td {
+      /* Each cell is a mini-layout with label from the header */
+      position: relative !important;
+      padding-left: 50% !important;
+      text-align: right !important;
+    }
+  
+    .total-leaves-table td:before {
+      /* Using psuedo-elements for labels */
+      position: absolute !important ;
+      top: 12px !important;
+      left: 12px !important;
+      width: 45% !important;
+      padding-right: 10px !important;
+      white-space: nowrap !important;
+      text-align: left !important;
+      font-weight: bold !important;
+    }
+  
+    /* Assigning labels */
+    .total-leaves-table td:nth-of-type(1):before { content: "#"; }
+    .total-leaves-table td:nth-of-type(2):before { content: "Name"; }
+    .total-leaves-table td:nth-of-type(3):before { content: "Department"; }
+    .total-leaves-table td:nth-of-type(4):before { content: "Date"; }
+    .total-leaves-table td:nth-of-type(5):before { content: "Reason"; }
+    .total-leaves-table td:nth-of-type(6):before { content: "Status"; }
+  }
+  

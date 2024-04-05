@@ -1,4 +1,5 @@
-import './NestedCom.css'
+import './approveleave.css'
+
 const ApprovedLeaves = ({ leavesData }) => {
     // Filtre les données pour obtenir seulement les congés approuvés
     const approvedLeaves = leavesData.filter(leave => leave.status === 'Approved');
