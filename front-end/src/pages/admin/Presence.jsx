@@ -44,16 +44,16 @@ function Presence() {
       <div className="mt-3">
         <div className="presence-container">
           <div className="">
-            <div className="d-flex align-items-center " style={{ background: '#f9f9f9' }}>
+            <div className="d-flex align-items-center p-2" style={{ background: '#f9f9f9' }}>
               <p><IoHomeOutline /> Accueil</p>
               <p className='mx-3'><BsChevronCompactRight className='fw-bolder' /> Présence</p>
             </div>
           </div>
-          <div className="card mt-3">
-            <div className="bg-secondary">
+          <div className="card mt-3" style={{margin: '0', padding: '0'}}>
+            <div className="bg-secondary p-2">
               <div className="container-fluid">
                 <div className="d-flex justify-content-between align-items-center">
-                  <p className='mx-3 text-white'> <BsPatchCheckFill /> <span className='fs-5'>Présence des employés</span> </p>
+                  <p className='text-white'> <BsPatchCheckFill /> <span className='fs-5'>Présence des employés</span> </p>
                   <Button className='fs' variant="light" size="sm">
                     + Marqueeer la présence
                   </Button>{' '}
