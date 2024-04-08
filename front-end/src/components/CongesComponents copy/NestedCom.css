@@ -1,0 +1,239 @@
+.admin-panel {
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+  }
+  
+  .buttons-container {
+    margin-bottom: 20px;
+  }
+  
+  .button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .pending { background-color: orange; }
+  .approved { background-color: green; }
+  .total { background-color: blue; }
+  .add { background-color: red; }
+  .view { background-color: purple; }
+  
+  .leaves-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .leaves-table th, 
+  .leaves-table td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  .leaves-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .status {
+    text-transform: capitalize;
+  }
+  
+  .status.pending {
+    color: white;
+    
+  }
+  
+  .status.approved {
+    color: black;
+    background-color: #45a049;
+  }
+/* Ajoutez cela à votre fichier CSS */
+.approve-btn {
+  background-color: #4CAF50; 
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.approve-btn:hover {
+  background-color: #45a049;
+}  
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+
+/* Style de base pour la barre de navigation */
+.menu-container {
+    /* background-color: #f8f9fa;  */
+    /* background-color: #207c7f;  */
+    background-color: #6dacc9; 
+    padding: 10px;
+    display: flex;
+    justify-content: space-around; /* Répartit les éléments uniformément */
+  }
+  
+  /* Style de base pour les boutons de navigation */
+  .menu-item {
+    text-decoration: none; 
+    color: #495057; 
+    font-size: 16px; 
+    border: none; 
+    padding: 10px 20px; 
+    margin: 0 5px; 
+    cursor: pointer; 
+    border-radius: 20px; 
+    transition: background-color 0.3s; 
+  }
+  
+  /* Change la couleur de fond lorsque le bouton est survolé */
+  .menu-item:hover {
+    background-color: #e9ecef; 
+  }
+  
+  /* Style pour le NavLink actif */
+  .menu-item.active {
+    background-color: #1e366d; /* Couleur de fond pour le bouton actif */
+    color: white; /* Couleur du texte pour le bouton actif */
+  }
+  
+  /* Icones FontAwesome */
+  .fa-coffee, .fa-user-plus, .fa-users {
+    margin-right: 8px; /* Espace entre l'icône et le texte */
+  }
+
+  /* Add this to your Home.css or a similar file */
+
+/* Style for the navigation bar */
+.nav-bar {
+    display: flex;
+    justify-content: center;
+    background: #ffffff; /* or any color that matches your design */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 10px 0;
+  }
+  
+  /* Style for each NavLink */
+  .menu-item {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 16px;
+    background: transparent;
+    color: #333; /* Adjust the color to match your design */
+    border: 2px solid transparent; /* Adjust border color */
+    transition: all 0.3s ease;
+  }
+  
+  /* Style for the active NavLink */
+  .active {
+    background-color: #05457d; /* Active state background color */
+    color: #ffffff; /* Active state text color */
+    border: 2px solid #05457d; /* Adjust active state border color if needed */
+  }
+  
+  /* Hover state for NavLinks */
+  .menu-item:hover {
+    background-color: #e7e7e7; /* Hover state background color */
+    color: #0056b3; /* Hover state text color */
+  }
+  
+  /* Adjustments for icons if necessary */
+  .menu-item .fa-icon {
+    margin-right: 8px;
+  }
+  
+/* ============================================================================== */
+
+  /* TotalLeaves.css */
+
+.total-leaves-modal {
+  background-color: #fff; 
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: auto;
+  
+}
+
+.total-leaves-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.total-leaves-table th, .total-leaves-table td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.total-leaves-table th {
+  background-color: #f4f4f4;
+}
+
+.status-tag {
+  padding: 5px 10px;
+  color: white;
+  border-radius: 15px;
+  font-size: 0.9em;
+}
+
+.status-tag.approved {
+  background-color: #28a745; 
+}
+
+.status-tag.pending {
+  background-color: #ffc107; 
+}
+/* ================================================================== */
+
+/* NestedCom.css */
+
+.add-employees-container {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.add-employees-container form {
+  display: grid;
+  gap: 15px;
+}
+
+.add-employees-container label {
+  font-weight: bold;
+}
+
+.add-employees-container input,
+.add-employees-container select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.add-employees-container button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-employees-container button:hover {
+  background-color: #0056b3;
+}

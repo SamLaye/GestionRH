@@ -26,7 +26,7 @@ function Paie() {
                     margin: "10px 12px",
                   }}
                 >
-                  <label style={{ color: "#fff" }}>Employé</label>
+                  <label>Employé</label>
                   <select
                     id="employes"
                     style={{
@@ -49,7 +49,7 @@ function Paie() {
                     margin: "10px 12px",
                   }}
                 >
-                  <label style={{ color: "#fff" }}>Mois</label>
+                  <label>Mois</label>
                   <input
                     type="text"
                     style={{
@@ -67,7 +67,7 @@ function Paie() {
                     margin: "10px 12px",
                   }}
                 >
-                  <label style={{ color: "#fff" }}>Du</label>
+                  <label>Du</label>
                   <input
                     type="date"
                     style={{ width: "60%", padding: "10px" }}
@@ -80,7 +80,7 @@ function Paie() {
                     margin: "10px 12px",
                   }}
                 >
-                  <label style={{ color: "#fff" }}>Au</label>
+                  <label>Au</label>
                   <input
                     type="date"
                     style={{ width: "60%", padding: "10px" }}
@@ -93,7 +93,7 @@ function Paie() {
                     margin: "10px 12px",
                   }}
                 >
-                  <label style={{ color: "#fff" }}>date d'embauche</label>
+                  <label>date d'embauche</label>
                   <input
                     type="date"
                     style={{ width: "60%", padding: "10px" }}
@@ -106,7 +106,7 @@ function Paie() {
                     margin: "10px 12px",
                   }}
                 >
-                  <label style={{ color: "#fff" }}>Salaire de base</label>
+                  <label>Salaire de base</label>
                   <input
                     type="text"
                     style={{ width: "60%", padding: "10px" }}
@@ -128,7 +128,7 @@ function Paie() {
                     margin: "10px 12px",
                   }}
                 >
-                  <label style={{ color: "#fff" }}>Situation familiale</label>
+                  <label>Situation familiale</label>
                   <input
                     type="text"
                     style={{ width: "60%", padding: "10px" }}
@@ -141,7 +141,7 @@ function Paie() {
                     margin: "10px 12px",
                   }}
                 >
-                  <label style={{ color: "#fff" }}>Enfants à charge</label>
+                  <label>Enfants à charge</label>
                   <input
                     type="text"
                     style={{ width: "60%", padding: "10px" }}
@@ -154,7 +154,7 @@ function Paie() {
                     margin: "10px 12px",
                   }}
                 >
-                  <label style={{ color: "#fff" }}>Taux CIMR</label>
+                  <label>Taux CIMR</label>
                   <input
                     type="text"
                     style={{ width: "60%", padding: "10px" }}
@@ -167,9 +167,7 @@ function Paie() {
                     margin: "10px 12px",
                   }}
                 >
-                  <label style={{ color: "#fff" }}>
-                    Taux Assistance Maladie
-                  </label>
+                  <label>Taux Assistance Maladie</label>
                   <input
                     type="text"
                     style={{ width: "60%", padding: "10px" }}
@@ -182,9 +180,7 @@ function Paie() {
                     margin: "10px 12px",
                   }}
                 >
-                  <label style={{ color: "#fff" }}>
-                    Assurance Retraite Complémentaire
-                  </label>
+                  <label>Assurance Retraite Complémentaire</label>
                   <input
                     type="text"
                     style={{ width: "60%", padding: "10px" }}
@@ -197,9 +193,7 @@ function Paie() {
                     margin: "10px 12px",
                   }}
                 >
-                  <label style={{ color: "#fff" }}>
-                    Intérert crédit logement
-                  </label>
+                  <label>Intérert crédit logement</label>
                   <input
                     type="text"
                     style={{ width: "60%", padding: "10px" }}
@@ -212,7 +206,7 @@ function Paie() {
                     margin: "10px 12px",
                   }}
                 >
-                  <label style={{ color: "#fff" }}>Retenue pret</label>
+                  <label>Retenue pret</label>
                   <input
                     type="text"
                     style={{ width: "60%", padding: "10px" }}
