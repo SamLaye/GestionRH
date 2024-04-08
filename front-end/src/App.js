@@ -12,11 +12,11 @@ import Paie from './pages/admin/Paie';
 import Presence from './pages/admin/Presence';
 import Rapport from './pages/admin/Rapport';
 import Notes from './pages/admin/Notes';
-import { PendingLeaves } from './components/CongesComponents/PendingLeaves';
-import { ApprovedLeaves } from './components/CongesComponents/ApprovedLeaves';
-import TotalLeaves from './components/CongesComponents/TotalLeaves';
-import AddEmployees from './components/CongesComponents/AddEmployees';
-import ViewEmployees from './components/CongesComponents/ViewEmployees';
+import LeaveTypeSection from './components/CongesComponents copy/LeaveType/LeaveTypeSection';
+import { PendingLeaves } from './components/CongesComponents copy/PendingLeave/PendingLeaves';
+import { ApprovedLeaves } from './components/CongesComponents copy/ApproveLeave/ApprovedLeaves';
+import TotalLeaves from './components/CongesComponents copy/TotalLeave/TotalLeaves';
+import GrantLeave from './components/CongesComponents copy/GrantLeave/GrantLeave';
 
 const leavesData = [
   { id: 1, name: 'Liam', department: 'Development', date: '2021-09-09', reason: 'THIS IS A DEMO TEST', status: 'Pending' },
@@ -42,8 +42,8 @@ function App() {
                <Route index element={<PendingLeaves  approveLeave={approveLeave}  leavesData={leavesData} />} />
                <Route path="approved-leaves" element={<ApprovedLeaves approveLeave={approveLeave} leavesData={leavesData} />} />
                <Route path="total-leaves" element={<TotalLeaves approveLeave={approveLeave} leavesData={leavesData} />} />
-               <Route path="add-employees" element={<AddEmployees approveLeave={approveLeave} leavesData={leavesData} />} />
-               <Route path="view-employees" element={<ViewEmployees approveLeave={approveLeave} leavesData={leavesData} />} />
+               <Route path="leave-type" element={<LeaveTypeSection approveLeave={approveLeave} leavesData={leavesData} />} />
+               <Route path="view-employees" element={<GrantLeave approveLeave={approveLeave} leavesData={leavesData} />} />
             </Route>
             <Route path='presence' element={<Presence />}/>
             <Route path='notes' element={<Notes />}/>
