@@ -120,7 +120,7 @@ export default function Employe() {
         <AjoutEmploye  onEmployeeAdded={handleAddEmployee} />
         <div style={{ height: 400, width: "100%" }}>
           <DataGrid
-            className="text-secondary"
+            className="bg-white"
             rows={rows}
             columns={columns}
             initialState={{

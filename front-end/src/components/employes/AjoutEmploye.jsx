@@ -171,10 +171,10 @@ function AjoutEmploye({ onEmployeeAdded }) {
                     className="border-0 border-bottom rounded-0"
                     aria-label="Default select example"
                   >
-                    <option selected>Departement</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option selected>Selectionner un departement</option>
+                    <option value="1">Finance</option>
+                    <option value="2">IT</option>
+                    <option value="3">Marketing</option>
                   </select>
                 </div>
                 <div className="col-6">
