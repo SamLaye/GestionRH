@@ -112,15 +112,15 @@ export default function Employe() {
 
 
   return (
-    <div>
+    <div className="">
       <div className="main-title" style={{ marginBottom: "30px" }}>
         <h3 style={{ textTransform: "uppercase" }}>EMPLOYéS</h3>
       </div>
       <div>
-        <AjoutEmploye onEmployeeAdded={handleAddEmployee} />
+        <AjoutEmploye  onEmployeeAdded={handleAddEmployee} />
         <div style={{ height: 400, width: "100%" }}>
           <DataGrid
-            className="bg-white"
+            className="text-secondary"
             rows={rows}
             columns={columns}
             initialState={{
