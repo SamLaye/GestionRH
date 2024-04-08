@@ -99,7 +99,7 @@
   
   /* Style pour le NavLink actif */
   .menu-item.active {
-    background-color: #05457d; /* Couleur de fond pour le bouton actif */
+    background-color: #1e366d; /* Couleur de fond pour le bouton actif */
     color: white; /* Couleur du texte pour le bouton actif */
   }
   

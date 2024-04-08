@@ -104,8 +104,9 @@
 // export default LeaveTypeSection;
 
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './leaveType.css';
+import axios from 'axios';
 
 const LeaveTypeSection = () => {
   const [leaveTypes, setLeaveTypes] = useState([]);
@@ -113,18 +114,43 @@ const LeaveTypeSection = () => {
   const [newLeaveType, setNewLeaveType] = useState({ type: '', description: '' });
 
   // Fonction pour ajouter un type de congé à la liste
-  const addLeaveType = (e) => {
+  const addLeaveType = async (e) => {
     e.preventDefault();
     // Vérifie que les champs ne sont pas vides
     if (newLeaveType.type && newLeaveType.description) {
-      setLeaveTypes([...leaveTypes, newLeaveType]);
-      setShowModal(false); // Ferme le modal après l'ajout
-      setNewLeaveType({ type: '', description: '' }); // Réinitialise le formulaire
+      try {
+        // Envoi des données à l'API via une requête POST
+        await axios.post('http://localhost:8000/api/leave-types', newLeaveType);
+        
+        // Rafraîchir la liste des types de congés après l'ajout
+        fetchLeaveTypes();
+        // Ferme le modal après l'ajout
+        setShowModal(false);
+        // Réinitialise le formulaire
+        setNewLeaveType({ type: '', description: '' });
+      } catch (error) {
+        console.error('Error adding leave type:', error);
+        alert('Une erreur est survenue lors de l\'ajout du type de congé.');
+      }
     } else {
       alert('Veuillez remplir tous les champs.');
     }
   };
-
+  
+  // recuperer les conges 
+  const fetchLeaveTypes = async () => {
+    try {
+      const response = await axios.get('http://localhost:8000/api/leave-types');
+      setLeaveTypes(response.data);
+    } catch (error) {
+      console.error('Error fetching leave types:', error);
+    }
+  };
+  useEffect(() => {
+    fetchLeaveTypes();
+  }, []);
+  
+  
   const openModal = () => {
     setShowModal(true);
     console.log('ouverture de la modal');
@@ -160,6 +186,13 @@ const LeaveTypeSection = () => {
              onChange={(e) => setNewLeaveType({ ...newLeaveType, description: e.target.value })}
              placeholder="Description"
              required
+           />
+           <input
+             type="number"
+             name="max_duration"
+             value={newLeaveType.max_duration}
+             onChange={(e) => setNewLeaveType({ ...newLeaveType, max_duration: e.target.value })}
+             placeholder="Max Duration"
            />
            <button type="submit">Submit</button>
          </form>

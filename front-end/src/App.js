@@ -12,11 +12,11 @@ import Paie from './pages/admin/Paie';
 import Presence from './pages/admin/Presence';
 import Rapport from './pages/admin/Rapport';
 import Notes from './pages/admin/Notes';
-import GrantLeave from './components/CongesComponents copy/GrantLeave/ViewEmployees';
 import LeaveTypeSection from './components/CongesComponents copy/LeaveType/LeaveTypeSection';
 import { PendingLeaves } from './components/CongesComponents copy/PendingLeave/PendingLeaves';
 import { ApprovedLeaves } from './components/CongesComponents copy/ApproveLeave/ApprovedLeaves';
 import TotalLeaves from './components/CongesComponents copy/TotalLeave/TotalLeaves';
+import GrantLeave from './components/CongesComponents copy/GrantLeave/GrantLeave';
 
 const leavesData = [
   { id: 1, name: 'Liam', department: 'Development', date: '2021-09-09', reason: 'THIS IS A DEMO TEST', status: 'Pending' },
