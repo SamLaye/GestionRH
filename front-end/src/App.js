@@ -12,6 +12,7 @@ import Paie from './pages/admin/Paie';
 import Presence from './pages/admin/Presence';
 import Rapport from './pages/admin/Rapport';
 import Notes from './pages/admin/Notes';
+import Connexion from './pages/connexion/Connexion';
 import LeaveTypeSection from './components/CongesComponents copy/LeaveType/LeaveTypeSection';
 import { PendingLeaves } from './components/CongesComponents copy/PendingLeave/PendingLeaves';
 import { ApprovedLeaves } from './components/CongesComponents copy/ApproveLeave/ApprovedLeaves';
@@ -31,6 +32,7 @@ const approveLeave = (id) => {
   console.log(`Leave with ID ${id} approved`);
   // Mettez à jour votre état ou base de données ici
 };
+
 function App() {
   return (
     <BrowserRouter>
