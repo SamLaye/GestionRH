@@ -15,6 +15,7 @@ function Notes() {
 
   const handleCloseModal = () => setShowModal(false);
   const handleShowModal = () => setShowModal(true);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const handleSubmit = () => {
     // Logique pour soumettre la note
@@ -25,6 +26,10 @@ function Notes() {
     handleCloseModal();
   };
 
+  const handleSearch = () => {
+    // Logique pour filtrer les notes en fonction de la recherche
+    console.log("Recherche :", searchQuery);
+  };
 
   return (
     <div>
@@ -45,14 +50,6 @@ function Notes() {
               <div className="container-fluid">
                 <div className="d-flex justify-content-between align-items-center">
                   <p className='text-white'> <BsPatchCheckFill /> <span className='fs-5 my-3'> Notes internes </span> </p>
-                  <div className="">
-                    <div className="d-flex justify-content-between align-items-center">
-                      <p>Aucune note trouvée</p>
-                      <Button className='fs' size="sm">
-                      <BsBackspaceFill />
-                      </Button>{' '}
-                    </div>
-                  </div>
                   <Button className='fs' variant="light" size="sm">
                     Ajouter une note
                   </Button>{' '}
@@ -70,8 +67,20 @@ function Notes() {
                   <option value="2">Two</option>
                   <option value="3">Three</option>
                 </Form.Select>
+                <Form.Control style={{ width: "15%" }} size="sm" type="text" placeholder="Rechercher..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
+                <Button variant="primary" onClick={handleSearch} className="ms-2">
+                  Rechercher
+                </Button>
               </div>
-              <div className="text-center">
+              <div className="mt-3 bg-light p-2">
+                <div className="d-flex justify-content-between align-items-center">
+                  <p>Aucune note trouvée</p>
+                  <Button className='fs' size="sm">
+                    <BsBackspaceFill />
+                  </Button>{' '}
+                </div>
+              </div>
+              <div className="text-center mt-2">
                 <Button variant="primary" onClick={handleShowModal}>
                   + Marqueeer une note interne
                 </Button>
