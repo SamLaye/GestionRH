@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use Illuminate\Http\Request;
@@ -10,23 +10,23 @@ class EmployeeController extends Controller
     public function index()
     {
         $employees = Employee::all();
-        return response()->json($employes);
+        return response()->json($employees);
     }
 
     public function store(Request $request)
     {
        // Valider les données de la requête
         $validatedData = $request->validate([
-            'firstName' => 'required|string',
-            'lastName' => 'required|string',
-            'email' => 'required|email|unique:employees,email',
+            'firstname' => 'required|string',
+            'lastname' => 'required|string',
+            'email' => 'required|string',
              'adress' => 'required|string', 
              'departement' => 'required|string',
             'date' => 'required|date',
         ]);
 
-        $employee = Employee::create($validatedData);
-        return response()->json(['message' => 'Employé crée avec success', 'employee' => $employe], 201);
+        $employees = Employee::create($validatedData);
+        return response()->json(['message' => 'Employé créé avec succès', 'employees' => $employee], 201);
     }
 
     public function show(Employe $employee)

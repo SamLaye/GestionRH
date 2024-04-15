@@ -3,48 +3,68 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { AiOutlinePlus } from "react-icons/ai";
+import axios from 'axios';
 
-function AjoutEmploye({ onEmployeeAdded }) {
+function AjoutEmploye({ updateEmployees }) {
+  const [employees, setEmployees] = useState([]);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
+  const [department, setDepartment] = useState("");
+  const [hireDate, setHireDate] = useState("");
+
   const [show, setShow] = useState(false);
-  const [employeeDetails, setEmployeeDetails] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    hireDate: "",
-    gender: "",
-    idNumber: "",
-    phoneNumber: "",
-    address: "",
-    birthDate: "",
-    employeeId: "",
-    department: "",
-    position: "",
-  });
 
-  const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
+  const handleFirstNameChange = (event) => {
+    setFirstName(event.target.value);
+  };
 
-  
+  const handleLastNameChange = (event) => {
+    setLastName(event.target.value);
+  };
 
-  const handleSubmit = () => {
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handleAddressChange = (event) => {
+    setAddress(event.target.value);
+  };
+
+  const handleDepartmentChange = (event) => {
+    setDepartment(event.target.value);
+  };
+
+  const handleHireDateChange = (event) => {
+    setHireDate(event.target.value);
+  };
+ // Fermer la modal
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const newEmployee = {
+      firstName,
+      lastName,
+      email,
+      address,
+      department,
+      hireDate,
     
-    onEmployeeAdded(employeeDetails);
-    // Reset form fields and close modal
-    setEmployeeDetails({
-      firstName: "",
-      lastName: "",
-      email: "",
-      hireDate: "",
-      gender: "",
-      idNumber: "",
-      phoneNumber: "",
-      address: "",
-      birthDate: "",
-      employeeId: "",
-      department: "",
-      position: "",
-    });
-    setShow(false);
+    };
+
+    
+      updateEmployees(newEmployee);
+      // Fermer la modal après la soumission du formulaire
+      handleClose();
+    setEmployees([...employees, newEmployee]);
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setAddress("");
+    setDepartment("");
+    setHireDate("");
   };
 
   return (
@@ -57,6 +77,7 @@ function AjoutEmploye({ onEmployeeAdded }) {
         <AiOutlinePlus className="me-3" />
         Nouvel employé
       </Button>
+
       <Modal
         show={show}
         onHide={handleClose}
@@ -76,7 +97,9 @@ function AjoutEmploye({ onEmployeeAdded }) {
                 <Form.Control
                   className=" rounded-0"
                   type="name"
-                  placeholder="entrer votre prenom"
+                  value={firstName}
+                  onChange={handleFirstNameChange}
+                  placeholder="Entrer votre prénom"
                   required
                 />
               </div>
@@ -85,7 +108,9 @@ function AjoutEmploye({ onEmployeeAdded }) {
                 <Form.Control
                   className=" rounded-0"
                   type="name"
-                  placeholder="entrer votre nom"
+                  value={lastName}
+                  onChange={handleLastNameChange}
+                  placeholder="Entrer votre nom"
                   required
                 />
               </div>
@@ -94,76 +119,41 @@ function AjoutEmploye({ onEmployeeAdded }) {
                 <Form.Control
                   className=" rounded-0"
                   type="email"
-                  placeholder="entrer votre email"
+                  value={email}
+                  onChange={handleEmailChange}
+                  placeholder="Entrer votre email"
                   required
                 />
               </div>
               <div className=" mb-2 col-6">
                 <Form.Label>Date d'embauche</Form.Label>
-                <Form.Control className=" rounded-0" type="date" required />
-              </div>
-              <div className=" mb-2 col-6">
-                <Form.Label className="me-3">Sexe</Form.Label>
-                <input
+                <Form.Control
                   className=" rounded-0"
-                  class="form-check-input"
-                  type="radio"
-                  name="inlineRadioOptions"
-                  id="inlineRadio1"
-                  value="option1"
+                  type="date"
+                  value={hireDate}
+                  onChange={handleHireDateChange}
                   required
                 />
-                <label class="form-check-label" for="inlineRadio1">
-                  Homme
-                </label>{" "}
-                <input
-                  className=" rounded-0"
-                  class="form-check-input"
-                  type="radio"
-                  name="inlineRadioOptions"
-                  id="inlineRadio1"
-                  value="option1"
-                  required
-                />
-                <label class="form-check-label" for="inlineRadio1">
-                  Femme
-                </label>
-              </div>
-              <div className=" mb-2 col-6">
-                <Form.Label>CNI</Form.Label>
-                <Form.Control className=" rounded-0" type="number" />
-              </div>
-              <div className=" mb-2 col-6">
-                <Form.Label>Telephone</Form.Label>
-                <Form.Control className=" rounded-0" type="date" />
               </div>
               <div className=" mb-2 col-6">
                 <Form.Label>Adresse</Form.Label>
-                <Form.Control className=" rounded-0" type="text" />
-              </div>
-              <div className=" mb-2 col-6">
-                <Form.Label>Date de naissance</Form.Label>
-                <Form.Control className=" rounded-0" type="date" />
-              </div>
-              <div className=" mb-2 col-6">
-                <Form.Label>Matricule</Form.Label>
-                <Form.Control className="rounded-0" type="number" />
-              </div>
-              <div className=" mb-2 col-6 mt-3">
-                <Form.Label>Departement</Form.Label>
-                <select
+                <Form.Control
                   className=" rounded-0"
-                  aria-label="Default select example"
-                >
-                  <option selected>Selectionner un departement</option>
-                  <option value="1">Finance</option>
-                  <option value="2">IT</option>
-                  <option value="3">Marketing</option>
-                </select>
+                  type="adress"
+                  value={address}
+                  onChange={handleAddressChange}
+                  required
+                />
               </div>
               <div className=" mb-2 col-6">
-                <Form.Label>Fonction</Form.Label>
-                <Form.Control className=" rounded-0" type="text" />
+                <Form.Label>Departement</Form.Label>
+                <Form.Control
+                  className=" rounded-0"
+                  type="text"
+                  value={department}
+                  onChange={handleDepartmentChange}
+                  required
+                />
               </div>
             </div>
           </Form.Group>
@@ -184,3 +174,4 @@ function AjoutEmploye({ onEmployeeAdded }) {
 }
 
 export default AjoutEmploye;
+
