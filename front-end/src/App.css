@@ -81,7 +81,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 30px 0 30px;
   margin-bottom: 30px;
 }
 
@@ -173,18 +172,19 @@ body {
   color: #fff !important;
   padding: 8px 15px;
   border-radius: 5px;
+  box-shadow: 50px;
 }
 ._card:first-child {
-  background-color: #2962ff;
+  background-color: #dedee1;
 }
 ._card:nth-child(2) {
-  background-color: #ff6d00;
+  background-color: #dedee1;
 }
 ._card:nth-child(3) {
-  background-color: #2e7d32;
+  background-color: #dedee1;
 }
 ._card:nth-child(4) {
-  background-color: #d50000;
+  background-color: #dedee1;
 }
 .card-inner {
   display: flex;

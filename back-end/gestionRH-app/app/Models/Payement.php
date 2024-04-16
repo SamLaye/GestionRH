@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Employe;
 use Illuminate\Database\Eloquent\Model;
 
 class Payement extends Model
@@ -22,9 +23,10 @@ class Payement extends Model
         // Ajoutez d'autres champs que vous souhaitez remplir
     ];
 
+    public $timestamps = false;
     // Relation avec le modèle Employee
-    public function employee()
+    public function employe()
     {
-        return $this->belongsTo(Employee::class);
+        return $this->belongsTo(Employe::class);
     }
 }

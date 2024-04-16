@@ -1,71 +1,72 @@
+
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { AiOutlinePlus } from "react-icons/ai";
-import axios from 'axios';
 
-function AjoutEmploye({ updateEmployees }) {
-  const [employees, setEmployees] = useState([]);
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [address, setAddress] = useState("");
-  const [department, setDepartment] = useState("");
-  const [hireDate, setHireDate] = useState("");
+function AjoutEmploye() {
+  const [formData, setFormData] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    date: "",
+    adress: "",
+    departement: "",
+  });
 
   const [show, setShow] = useState(false);
 
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
-  const handleFirstNameChange = (event) => {
-    setFirstName(event.target.value);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
   };
 
-  const handleLastNameChange = (event) => {
-    setLastName(event.target.value);
-  };
-
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const handleAddressChange = (event) => {
-    setAddress(event.target.value);
-  };
-
-  const handleDepartmentChange = (event) => {
-    setDepartment(event.target.value);
-  };
-
-  const handleHireDateChange = (event) => {
-    setHireDate(event.target.value);
-  };
- // Fermer la modal
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const newEmployee = {
-      firstName,
-      lastName,
-      email,
-      address,
-      department,
-      hireDate,
-    
-    };
+    try {
+      const newEmployee = new FormData();
 
-    
-      updateEmployees(newEmployee);
-      // Fermer la modal après la soumission du formulaire
-      handleClose();
-    setEmployees([...employees, newEmployee]);
-    setFirstName("");
-    setLastName("");
-    setEmail("");
-    setAddress("");
-    setDepartment("");
-    setHireDate("");
+      // Ajouter les champs et leurs valeurs à FormData
+      newEmployee.append("firstname", formData.firstname);
+      newEmployee.append("lastname", formData.lastname);
+      newEmployee.append("email", formData.email);
+      newEmployee.append("date", formData.date);
+      newEmployee.append("adress", formData.adress);
+      newEmployee.append("departement", formData.departement);
+
+      const response = await fetch("http://127.0.0.1:8000/api/employes", {
+        method: "POST",
+        body: newEmployee,
+      });
+
+      if (!response.ok) {
+        throw new Error("Erreur lors de la création de l'employé");
+      }
+
+      // Réinitialiser les champs du formulaire après la création réussie de l'employé
+      setFormData({
+        firstname: "",
+        lastname: "",
+        email: "",
+        date: "",
+        adress: "",
+        departement: "",
+      });
+
+      handleClose(); // Fermer la modale après la création réussie de l'employé
+    } catch (error) {
+      console.error(
+        "Une erreur est survenue lors de la création de l'employé:",
+        error.message
+      );
+      // Gérer l'erreur ici, par exemple, afficher un message d'erreur à l'utilisateur
+    }
   };
+
 
   return (
     <div>
@@ -87,86 +88,95 @@ function AjoutEmploye({ updateEmployees }) {
           <Modal.Title className="text-white">Nouvel employé</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form.Group
-            className=" text-black"
-            controlId="exampleForm.ControlInput1"
-          >
-            <div className="row">
-              <div className=" mb-2 col-6">
-                <Form.Label>Prénom</Form.Label>
-                <Form.Control
-                  className=" rounded-0"
-                  type="name"
-                  value={firstName}
-                  onChange={handleFirstNameChange}
-                  placeholder="Entrer votre prénom"
-                  required
-                />
-              </div>
-              <div className=" mb-2 col-6">
-                <Form.Label>Nom</Form.Label>
-                <Form.Control
-                  className=" rounded-0"
-                  type="name"
-                  value={lastName}
-                  onChange={handleLastNameChange}
-                  placeholder="Entrer votre nom"
-                  required
-                />
-              </div>
-              <div className=" mb-2 col-6">
-                <Form.Label>Email</Form.Label>
-                <Form.Control
-                  className=" rounded-0"
-                  type="email"
-                  value={email}
-                  onChange={handleEmailChange}
-                  placeholder="Entrer votre email"
-                  required
-                />
-              </div>
-              <div className=" mb-2 col-6">
-                <Form.Label>Date d'embauche</Form.Label>
-                <Form.Control
-                  className=" rounded-0"
-                  type="date"
-                  value={hireDate}
-                  onChange={handleHireDateChange}
-                  required
-                />
-              </div>
-              <div className=" mb-2 col-6">
-                <Form.Label>Adresse</Form.Label>
-                <Form.Control
-                  className=" rounded-0"
-                  type="adress"
-                  value={address}
-                  onChange={handleAddressChange}
-                  required
-                />
-              </div>
-              <div className=" mb-2 col-6">
-                <Form.Label>Departement</Form.Label>
-                <Form.Control
-                  className=" rounded-0"
-                  type="text"
-                  value={department}
-                  onChange={handleDepartmentChange}
-                  required
-                />
-              </div>
-            </div>
-          </Form.Group>
-          <div className="text-end me-2">
-            <Button
-              className="border-0 rounded-0"
-              variant="primary"
-              type="submit"
-              onClick={handleSubmit}
+          <Form onSubmit={handleSubmit}>
+            <Form.Group
+              className="text-black"
+              controlId="exampleForm.ControlInput1"
             >
-              Valider
-            </Button>
-          </div>
+              <div className="row">
+                <div className="mb-2 col-6">
+                  <Form.Label>Prénom</Form.Label>
+                  <Form.Control
+                    className="rounded-0"
+                    type="name"
+                    name="firstname"
+                    value={formData.firstname}
+                    onChange={handleChange}
+                    placeholder="Entrer votre prénom"
+                    required
+                  />
+                </div>
+                <div className="mb-2 col-6">
+                  <Form.Label>Nom</Form.Label>
+                  <Form.Control
+                    className="rounded-0"
+                    type="name"
+                    name="lastname"
+                    value={formData.lastname}
+                    onChange={handleChange}
+                    placeholder="Entrer votre nom"
+                    required
+                  />
+                </div>
+                <div className="mb-2 col-6">
+                  <Form.Label>Email</Form.Label>
+                  <Form.Control
+                    className="rounded-0"
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="Entrer votre email"
+                    required
+                  />
+                </div>
+                <div className="mb-2 col-6">
+                  <Form.Label>Date d'embauche</Form.Label>
+                  <Form.Control
+                    className="rounded-0"
+                    type="number"
+                    name="date"
+                    value={formData.date}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="mb-2 col-6">
+                  <Form.Label>Adresse</Form.Label>
+                  <Form.Control
+                    className="rounded-0"
+                    type="text"
+                    name="adress"
+                    value={formData.adress}
+                    onChange={handleChange}
+                    placeholder="Entrer votre adresse"
+                    required
+                  />
+                </div>
+                <div className="mb-2 col-6">
+                  <Form.Label>Département</Form.Label>
+                  <Form.Control
+                    className="rounded-0"
+                    type="text"
+                    name="departement"
+                    value={formData.departement}
+                    onChange={handleChange}
+                    placeholder="Entrer votre département"
+                    required
+                  />
+                </div>
+              </div>
+            </Form.Group>
+            <div className="text-end me-2">
+              <Button
+                className="border-0 rounded-0"
+                variant="primary"
+                type="submit"
+              >
+                Valider
+              </Button>
+            </div>
+          </Form>
         </Modal.Body>
       </Modal>
     </div>
@@ -174,4 +184,3 @@ function AjoutEmploye({ updateEmployees }) {
 }
 
 export default AjoutEmploye;
-

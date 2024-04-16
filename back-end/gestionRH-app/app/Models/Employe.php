@@ -19,4 +19,7 @@ class Employe extends Model
         'adress',
         'departement',
     ];
+
+        public $timestamps = false; // Désactiver la gestion automatique des horodatages
+
 }
