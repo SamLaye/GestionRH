@@ -19,6 +19,7 @@ import { ApprovedLeaves } from './components/CongesComponents copy/ApproveLeave/
 import TotalLeaves from './components/CongesComponents copy/TotalLeave/TotalLeaves';
 import GrantLeave from './components/CongesComponents copy/GrantLeave/GrantLeave';
 
+
 const leavesData = [
   { id: 1, name: 'Liam', department: 'Development', date: '2021-09-09', reason: 'THIS IS A DEMO TEST', status: 'Pending' },
   { id: 2, name: 'Cory B Puente', department: 'UX', date: '2021-07-03', reason: 'Not feeling well, need to quarantine myself!', status: 'Approved' },
