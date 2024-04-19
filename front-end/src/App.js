@@ -37,6 +37,9 @@ const approveLeave = (id) => {
 function App() {
   return (
     <BrowserRouter>
+        <Routes>
+        <Route path='connexion' element={<Connexion />} />
+        </Routes>
       <Template sidebar={<Sidebar/>} navbar={<Navbar/>}>
         <Routes>
             <Route index element={<Home/> }/>
