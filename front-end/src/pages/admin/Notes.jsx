@@ -39,14 +39,9 @@ function Notes() {
 
       <div className="container-fluid mt-3">
         <div className="notes-container">
-          <div className="">
-            <div className="d-flex align-items-center " style={{ background: '#f9f9f9' }}>
-              <p><IoHomeOutline /> Accueil</p>
-              <p className=''><BsChevronCompactRight className='fw-bolder' /> Notes internes</p>
-            </div>
-          </div>
+         
           <div className="card mt-2">
-            <div className="bg-secondary p-2">
+            <div className=" p-2" style={{ background: '#2d2e5c' }}>
               <div className="container-fluid">
                 <div className="d-flex justify-content-between align-items-center">
                   <p className='text-white'> <BsPatchCheckFill /> <span className='fs-5 my-3'> Notes internes </span> </p>
@@ -68,20 +63,20 @@ function Notes() {
                   <option value="3">Three</option>
                 </Form.Select>
                 <Form.Control style={{ width: "15%" }} size="sm" type="text" placeholder="Rechercher..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
-                <Button variant="primary" onClick={handleSearch} className="ms-2">
+                <Button style={{ background: '#2d2e5c',border:'none' }} onClick={handleSearch} className="ms-2">
                   Rechercher
                 </Button>
               </div>
               <div className="mt-3 bg-light p-2">
                 <div className="d-flex justify-content-between align-items-center">
                   <p>Aucune note trouvée</p>
-                  <Button className='fs' size="sm">
+                  <Button style={{ background: '#2d2e5c', border:'none' }} size="sm">
                     <BsBackspaceFill />
                   </Button>{' '}
                 </div>
               </div>
               <div className="text-center mt-2">
-                <Button variant="primary" onClick={handleShowModal}>
+                <Button style={{ background: '#2d2e5c', border:'none' }} onClick={handleShowModal}>
                   + Marqueeer une note interne
                 </Button>
               </div>
@@ -120,10 +115,10 @@ function Notes() {
               </Form>
             </Modal.Body>
             <Modal.Footer>
-              <Button variant="secondary" onClick={handleCloseModal}>
+              <Button  style={{ background: '#2d2e5c' }} onClick={handleCloseModal}>
                 Annuler
               </Button>
-              <Button variant="primary" onClick={handleSubmit}>
+              <Button style={{ background: '#2d2e5c' }} onClick={handleSubmit}>
                 Enregistrer
               </Button>
             </Modal.Footer>

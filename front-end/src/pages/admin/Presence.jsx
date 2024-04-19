@@ -43,14 +43,8 @@ function Presence() {
 
       <div className="mt-3">
         <div className="presence-container">
-          <div className="">
-            <div className="d-flex align-items-center p-2" style={{ background: '#f9f9f9' }}>
-              <p><IoHomeOutline /> Accueil</p>
-              <p className='mx-3'><BsChevronCompactRight className='fw-bolder' /> Présence</p>
-            </div>
-          </div>
           <div className="card mt-3" style={{margin: '0', padding: '0'}}>
-            <div className="bg-secondary p-2">
+            <div className=" p-2" style={{ background: '#2d2e5c' }}>
               <div className="container-fluid">
                 <div className="d-flex justify-content-between align-items-center">
                   <p className='text-white'> <BsPatchCheckFill /> <span className='fs-5'>Présence des employés</span> </p>
@@ -75,7 +69,7 @@ function Presence() {
 
             <div className="date-navigation mt-4">
               <button onClick={goToPreviousDay}><BsChevronCompactLeft className='fw-bolder' /> Jour précédent</button>
-              <span>{currentDate.toLocaleDateString()}</span>
+              <span style={{ color: '#2d2e5c' }}>{currentDate.toLocaleDateString()}</span>
               <button onClick={goToNextDay}>Jour suivant <BsChevronCompactRight className='fw-bolder' /></button>
             </div>
             <div className="container-fluid p-3">
@@ -141,7 +135,7 @@ function Presence() {
               <Button variant="secondary" onClick={handleClose}>
                 Annulé
               </Button>
-              <Button variant="primary">Enregistré</Button>
+              <Button style={{ background: '#2d2e5c',border:'none' }} >Enregistré</Button>
             </Modal.Footer>
           </Modal>
         </div>
