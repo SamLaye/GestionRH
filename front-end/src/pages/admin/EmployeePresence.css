@@ -28,7 +28,7 @@
   }
   
   button {
-    background-color: #4CAF50;
+    background-color: #2d2e5c;
     color: white;
     padding: 6px 10px;
     margin: 2px;
@@ -38,5 +38,5 @@
   }
   
   button:hover {
-    background-color: #45a049;
+    background-color: #6c757d;
   }
