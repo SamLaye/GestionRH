@@ -61,12 +61,15 @@ body {
 
 }
 
-.icon,
+
 .icon_header {
   margin-right: 5px;
-  color: #fff !important;
+  color: #fff ;
 }
-
+.icone{
+  margin-right: 5px;
+  color: #2d2e5c ;
+}
 .menu-icon {
   display: none;
 }
