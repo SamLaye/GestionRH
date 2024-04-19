@@ -1,123 +1,20 @@
-// import React, { useState, useEffect } from 'react';
-// import axios from 'axios';
-// import './leaveType.css';
-
-// const LeaveTypeSection = () => {
-//   const [leaveTypes, setLeaveTypes] = useState([]);
-//   const [showModal, setShowModal] = useState(false);
-//   const [newLeaveType, setNewLeaveType] = useState({ type: '', description: '' });
-
-//   useEffect(() => {
-//     fetchLeaveTypes();
-//   }, []);
-
-//   const fetchLeaveTypes = async () => {
-//     try {
-//       const response = await axios.get('/api/leave-types');
-//       setLeaveTypes(response.data);
-//     } catch (error) {
-//       console.error("Error fetching leave types:", error);
-//     }
-//   };
-
-//   const handleInputChange = (e) => {
-//     setNewLeaveType({ ...newLeaveType, [e.target.name]: e.target.value });
-//   };
-
-//   const addLeaveType = async (e) => {
-//     e.preventDefault();
-//     try {
-//       await axios.post('/api/leave-types', newLeaveType);
-//       fetchLeaveTypes(); // Refresh the list after adding
-//       setShowModal(false); // Close modal after adding
-//       setNewLeaveType({ type: '', description: '' }); // Reset form
-//     } catch (error) {
-//       console.error("Error adding leave type:", error);
-//     }
-//   };
-
-//   const openModal = () => {
-//     console.log("Opening modal...");
-//     setShowModal(true);
-//   };
-  
-//   const closeModal = () => {
-//     console.log("Closing modal...");
-//     setShowModal(false);
-//   };
-  
-//   return (
-//     <div className="leave-type-section">
-//       <h2>Leave Types</h2>
-//       <button className="add-leave-type-btn" onClick={openModal}>
-//         Add Leave Type
-//       </button>
-
-//       {showModal && (
-//         <div className="modal">
-//           <div className="modal-content">
-//             <span className="close" onClick={closeModal}>&times;</span>
-//             <h3>Add a New Leave Type</h3>
-//             <form onSubmit={addLeaveType}>
-//               <input
-//                 name="type"
-//                 value={newLeaveType.type}
-//                 onChange={handleInputChange}
-//                 placeholder="Leave Type"
-//                 required
-//               />
-//               <textarea
-//                 name="description"
-//                 value={newLeaveType.description}
-//                 onChange={handleInputChange}
-//                 placeholder="Description"
-//                 required
-//               />
-//               <button type="submit">Submit</button>
-//             </form>
-//           </div>
-//         </div>
-//        )} 
-
-//       <table>
-//         <thead>
-//           <tr>
-//             <th>Type</th>
-//             <th>Description</th>
-//             <th>Created At</th>
-//           </tr>
-//         </thead>
-//         <tbody>
-//           {leaveTypes.map((type) => (
-//             <tr key={type.id}>
-//               <td>{type.type}</td>
-//               <td>{type.description}</td>
-//               <td>{type.created}</td>
-//             </tr>
-//           ))}
-//         </tbody>
-//       </table>
-//     </div>
-//   );
-// };
-
-// export default LeaveTypeSection;
-
 
 import React, { useEffect, useState } from 'react';
 import './leaveType.css';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const LeaveTypeSection = () => {
   const [leaveTypes, setLeaveTypes] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  const [newLeaveType, setNewLeaveType] = useState({ type: '', description: '' });
+  const [newLeaveType, setNewLeaveType] = useState({ name: '', description: '',max_duration:'' });
 
   // Fonction pour ajouter un type de congé à la liste
   const addLeaveType = async (e) => {
     e.preventDefault();
     // Vérifie que les champs ne sont pas vides
-    if (newLeaveType.type && newLeaveType.description) {
+    if (newLeaveType.name && newLeaveType.description) {
       try {
         // Envoi des données à l'API via une requête POST
         await axios.post('http://localhost:8000/api/leave-types', newLeaveType);
@@ -127,10 +24,14 @@ const LeaveTypeSection = () => {
         // Ferme le modal après l'ajout
         setShowModal(false);
         // Réinitialise le formulaire
-        setNewLeaveType({ type: '', description: '' });
+        setNewLeaveType({ name: '', description: '',max_duration:'' });
+      toast.success('Le congé a été accordé avec succès !');
+
       } catch (error) {
-        console.error('Error adding leave type:', error);
-        alert('Une erreur est survenue lors de l\'ajout du type de congé.');
+        // console.error('Error adding leave type:', error);
+        console.log(error);
+       toast.error('Une erreur est survenue lors de l\'ajout du type de congé. !');
+
       }
     } else {
       alert('Veuillez remplir tous les champs.');
@@ -142,6 +43,7 @@ const LeaveTypeSection = () => {
     try {
       const response = await axios.get('http://localhost:8000/api/leave-types');
       setLeaveTypes(response.data);
+      console.log(response.data);
     } catch (error) {
       console.error('Error fetching leave types:', error);
     }
@@ -161,6 +63,9 @@ const LeaveTypeSection = () => {
   };
   
   return (
+    <div>
+    <ToastContainer />
+
     <div className="leave-type-section">
       <h2>Leave Types</h2>
       <button className="add-leave-type-btn" onClick={openModal}>
@@ -175,8 +80,8 @@ const LeaveTypeSection = () => {
          <form onSubmit={addLeaveType}>
            <input
              name="type"
-             value={newLeaveType.type}
-             onChange={(e) => setNewLeaveType({ ...newLeaveType, type: e.target.value })}
+             value={newLeaveType.name}
+             onChange={(e) => setNewLeaveType({ ...newLeaveType, name: e.target.value })}
              placeholder="Leave Type"
              required
            />
@@ -206,17 +111,20 @@ const LeaveTypeSection = () => {
           <tr>
             <th>Type</th>
             <th>Description</th>
+            <th>Durée Maximum</th>
           </tr>
         </thead>
         <tbody>
           {leaveTypes.map((type, index) => (
             <tr key={index}>
-              <td>{type.type}</td>
+              <td>{type.name}</td>
               <td>{type.description}</td>
+              <td>{type.max_duration}jours</td>
             </tr>
           ))}
         </tbody>
       </table>
+    </div>
     </div>
   );
 };

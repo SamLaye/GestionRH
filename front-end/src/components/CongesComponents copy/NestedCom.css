@@ -73,7 +73,8 @@
 .menu-container {
     /* background-color: #f8f9fa;  */
     /* background-color: #207c7f;  */
-    background-color: #6dacc9; 
+    background-color: #f5f4fb; 
+    /* background-color: #6dacc9;  */
     padding: 10px;
     display: flex;
     justify-content: space-around; /* Répartit les éléments uniformément */
@@ -99,8 +100,8 @@
   
   /* Style pour le NavLink actif */
   .menu-item.active {
-    background-color: #1e366d; /* Couleur de fond pour le bouton actif */
-    color: white; /* Couleur du texte pour le bouton actif */
+    background-color: #2d2e5c; 
+    color: white; 
   }
   
   /* Icones FontAwesome */
@@ -127,22 +128,22 @@
     text-decoration: none;
     font-size: 16px;
     background: transparent;
-    color: #333; /* Adjust the color to match your design */
-    border: 2px solid transparent; /* Adjust border color */
+    color: #333; 
+    border: 2px solid transparent; 
     transition: all 0.3s ease;
   }
   
   /* Style for the active NavLink */
   .active {
-    background-color: #05457d; /* Active state background color */
-    color: #ffffff; /* Active state text color */
-    border: 2px solid #05457d; /* Adjust active state border color if needed */
+    background-color: #2d2e5c; 
+    color: #ffffff; 
+    border: 2px solid #2d2e5c; 
   }
   
   /* Hover state for NavLinks */
   .menu-item:hover {
     background-color: #e7e7e7; /* Hover state background color */
-    color: #0056b3; /* Hover state text color */
+    color: #2d2e5c; 
   }
   
   /* Adjustments for icons if necessary */
@@ -226,7 +227,7 @@
 .add-employees-container button {
   width: 100%;
   padding: 10px;
-  background-color: #007bff;
+  background-color: #2d2e5c;
   color: white;
   border: none;
   border-radius: 3px;
