@@ -34,8 +34,8 @@ const TotalLeaves = () => {
 if (!leavesData.length) {
   return (
     <div className="sweet-loading">
-      <ClipLoader color={'#05457d'} loading={true} css={override} size={150} />
-      <div>Chargement des congés en attente...</div>
+      <ClipLoader color={'#2d2e5c'} loading={true} css={override} size={50} />
+      <div>Chargement des congés ...</div>
     </div>
   );
 }
@@ -64,9 +64,9 @@ if (!leavesData.length) {
               <td>{leave.start_date}</td>
               <td>{leave.end_date}</td>
               <td>
-                <span className={`status-tag ${leave.status.toLowerCase()}`}>
-                  {leave.status}
-                </span>
+              <span className={`status-tag ${leave.status.toLowerCase() === 'en attente' ? 'en-attente' : leave.status.toLowerCase()}`}>
+    {leave.status}
+    </span>
               </td>
             </tr>
           ))}

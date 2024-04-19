@@ -28,7 +28,7 @@ const PendingLeaves = () => {
   const fetchPendingLeaves = async () => {
     try {
       const response = await axios.get('http://localhost:8000/api/leaves/pending');
-      const pendingLeavesData = response.data.filter(leave => leave.status === 'pending');
+      const pendingLeavesData = response.data.filter(leave => leave.status === 'pending'|| leave.status === 'En attente');
       setPendingLeaves(pendingLeavesData);
     } catch (error) {
       console.error('Error fetching leaves:', error);
@@ -49,7 +49,7 @@ const PendingLeaves = () => {
   if (!pendingLeaves.length) {
     return (
       <div className="sweet-loading">
-        <ClipLoader color={'#05457d'} loading={true} css={override} size={150} />
+        <ClipLoader color={'#2d2e5c'} loading={true} css={override} size={50} />
         <div>Chargement des congés en attente...</div>
       </div>
     );

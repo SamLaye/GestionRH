@@ -1,8 +1,8 @@
 .total-leaves-modal {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-    color: #fff; 
+    color: #2d2e5c; 
     /* background: #7c7d72 !important;  */
-    background: #03111e!important; 
+    background: #ccc!important; 
     padding: 20px;
     border-radius: 8px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
@@ -12,7 +12,7 @@
   
   h2 {
     text-align: center;
-    color: #005792 !important; /* A color that matches your brand */
+    color: #2d2e5c !important; /* A color that matches your brand */
     margin-bottom: 24px;
   }
   
@@ -26,18 +26,19 @@
   .total-leaves-table th,
   .total-leaves-table td {
     text-align: left;
-    padding: 12px; /* Spacing within cells */
-    border-bottom: 1px solid #ddd !important; /* Light borders for separation without heaviness */
+    padding: 12px; 
+    border-bottom: 1px solid #ddd !important; 
   }
   
   .total-leaves-table th {
-    background-color: #005792 !important; /* Header background */
-    color: white !important; /* Header text color */
+    background-color: #2d2e5c !important; 
+    color: white !important; 
   }
   
-  .total-leaves-table tbody tr:nth-child(odd) {
-    background-color: #6dacc9; /* Zebra striping for rows */
-  }
+  /* .total-leaves-table tbody tr:nth-child(odd) {
+    background-color: #dedee1; 
+    color: #000;
+  } */
   
   .total-leaves-table tbody tr:hover {
     background-color: #ddd; /* Hover state for rows */
@@ -53,7 +54,7 @@
   }
   
   /* Color-coded status tags */
-  .status-tag.approved {
+  .status-tag.approuvé {
     background-color: #4CAF50;
   }
   
@@ -61,10 +62,12 @@
     background-color: #FF9800;
   }
   
-  .status-tag.rejected {
+  .status-tag.rejecté {
     background-color: #F44336;
   }
-
+  .status-tag.en-attente {
+    background-color: #FF9800;
+  }
   
   @media screen and (max-width: 768px) {
     .total-leaves-table,

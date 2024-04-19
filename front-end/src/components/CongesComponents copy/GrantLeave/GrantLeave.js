@@ -42,21 +42,19 @@ const GrantLeave = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Remplacez '/api/leaves' par l'URL correcte pour créer un nouveau congé
+  
     axios.post('http://localhost:8000/api/leaves', {
       employee_id: selectedEmployee,
       start_date: start_date,
       end_date: end_date,
       status: status,
       reason: reason,
-      email: email, // Ajoutez cette ligne
-      department: department, // Ajoutez cette ligne
+      email: email, 
+      department: department, 
     }).then(() => {
       toast.success('Le congé a été accordé avec succès !');
-
-      // Réinitialisez le formulaire ou effectuez des actions supplémentaires ici
     }).catch(error => {
-      alert('Erreur lors de la création du congé.');
+      toast.error('Une erreur est survenue lors de l\'ajout du type de congé. !');
       console.log('Erreur:', error);
     });
   };
@@ -65,13 +63,7 @@ const GrantLeave = () => {
     <div>
        <ToastContainer />
     <form className="grant-leave-form" onSubmit={handleSubmit}>
-      <label className="form-label">ID Employé:</label>
-      <select className="form-select" value={selectedEmployee} onChange={handleEmployeeChange}>
-        <option className='options' value="">Sélectionnez L'idendifiant de l'employé</option>
-        {employees.map(employee => (
-          <option key={employee.id} value={employee.id}>{employee.id} </option>
-        ))}
-      </select>
+     
       <label className="form-label">Employé:</label>
       <select className="form-select" value={selectedEmployee} onChange={handleEmployeeChange}>
         <option className='options' value="">Sélectionnez un employé</option>
@@ -80,10 +72,10 @@ const GrantLeave = () => {
         ))}
       </select>
 
-      <label className="form-label">Email:</label> {/* Ajoutez cette ligne */}
+      <label className="form-label">Email:</label> 
       <input className="form-input" type="text" value={email} readOnly />
 
-      <label className="form-label">Département:</label> {/* Ajoutez cette ligne */}
+      <label className="form-label">Département:</label> 
       <input className="form-input" type="text" value={department} readOnly />
 
       <label className="form-label">Date de début:</label>

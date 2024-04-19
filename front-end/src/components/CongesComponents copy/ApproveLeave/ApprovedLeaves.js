@@ -27,6 +27,7 @@ const ApprovedLeaves = () => {
             try {
                 const response = await axios.get('http://localhost:8000/api/leaves/approved');
                 setApprovedLeaves(response.data);
+                console.log(response.data);
             } catch (error) {
                 console.error('Error fetching approved leaves:', error);
             }
@@ -37,8 +38,8 @@ const ApprovedLeaves = () => {
     if (!approvedLeaves.length) {
       return (
         <div css={containerStyles}>
-          <ClipLoader color={'#05457d'} loading={true} css={override} size={150} />
-          <div>Chargement des congés en attente...</div>
+          <ClipLoader color={'#2d2e5c'} loading={true} css={override} size={50} />
+          <div>Chargement des congés aprouvés...</div>
         </div>
       );
     }
