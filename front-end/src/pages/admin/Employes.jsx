@@ -3,6 +3,7 @@ import AjoutEmploye from "../../components/employes/AjoutEmploye";
 import { Table } from "react-bootstrap";
 import { CgEye } from "react-icons/cg";
 import { MdOutlineModeEdit } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 
 const Employes = () => {
   const [employees, setEmployees] = useState([]);
@@ -34,19 +35,14 @@ const Employes = () => {
   );
 
   return (
-    <div className="px-2 bg-white shadow-lg">
+    <div className="">
       <h2>Liste des employés</h2>
-      <div className="d-flex justify-content-end">
-        <input
-          controlId="filterFirstname"
-          type="text"
-          placeholder="Rechercher par prénom"
-          value={searchTerm}
-          onChange={handleSearchChange}
-        />
+      <div>
+        <AjoutEmploye updateEmployees={updateEmployees} />
       </div>
-      <Table striped bordered hover>
-        <thead>
+      
+      <Table striped bordered hover responsive>
+        <thead className="bg-tertiary">
           <tr>
             <th>Prénom</th>
             <th>Nom</th>
@@ -66,16 +62,15 @@ const Employes = () => {
               <td>{employee.date}</td>
               <td>{employee.adress}</td>
               <td>{employee.departement}</td>
-              <td>
-                {/* Les icônes pour les actions */}
-                <CgEye className="bg-primary rounded" />
-                <MdOutlineModeEdit className="bg-primary rounded" />
+              <td className="d-flex justify-content-center">
+                <CgEye className="text-warning" />
+                <MdOutlineModeEdit className="text-secondary" />
+                <MdDelete className="text-danger" />
               </td>
             </tr>
           ))}
         </tbody>
       </Table>
-      <AjoutEmploye updateEmployees={updateEmployees} />
     </div>
   );
 };

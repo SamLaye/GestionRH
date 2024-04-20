@@ -71,7 +71,7 @@ function AjoutEmploye() {
   return (
     <div>
       <Button
-        variant="primary"
+        variant="secondary"
         className="my-2 rounded-0 border-0 bg-secondary"
         onClick={handleShow}
       >
@@ -84,7 +84,7 @@ function AjoutEmploye() {
         onHide={handleClose}
         className="border-primary modal-dialog modal-lg"
       >
-        <Modal.Header className="bg-primary">
+        <Modal.Header className="bg-secondary">
           <Modal.Title className="text-white">Nouvel employé</Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -170,7 +170,7 @@ function AjoutEmploye() {
             <div className="text-end me-2">
               <Button
                 className="border-0 rounded-0"
-                variant="primary"
+                variant="secondary"
                 type="submit"
               >
                 Valider
