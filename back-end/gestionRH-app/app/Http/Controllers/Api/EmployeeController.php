@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Models\Employee;
 use Illuminate\Http\Request;
@@ -10,20 +10,26 @@ class EmployeeController extends Controller
     public function index()
     {
         $employees = Employee::all();
-        return response()->json($employees);
+        return response()->json($employes);
     }
 
     public function store(Request $request)
     {
+       // Valider les données de la requête
         $validatedData = $request->validate([
-            // Ici, vous définirez vos règles de validation
+            'firstName' => 'required|string',
+            'lastName' => 'required|string',
+            'email' => 'required|email|unique:employees,email',
+             'adress' => 'required|string', 
+             'departement' => 'required|string',
+            'date' => 'required|date',
         ]);
 
         $employee = Employee::create($validatedData);
-        return response()->json(['message' => 'Employee created successfully.', 'employee' => $employee], 201);
+        return response()->json(['message' => 'Employé crée avec success', 'employee' => $employe], 201);
     }
 
-    public function show(Employee $employee)
+    public function show(Employe $employee)
     {
         return response()->json($employee);
     }
@@ -35,12 +41,12 @@ class EmployeeController extends Controller
         ]);
 
         $employee->update($validatedData);
-        return response()->json(['message' => 'Employee updated successfully.', 'employee' => $employee]);
+        return response()->json(['message' => 'Employee updated successfully.', 'employee' => $employe]);
     }
 
-    public function destroy(Employee $employee)
+    public function destroy(Employe $employe)
     {
-        $employee->delete();
+        $employe->delete();
         return response()->json(['message' => 'Employee deleted successfully.']);
     }
 }
