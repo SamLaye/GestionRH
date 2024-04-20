@@ -14,7 +14,7 @@
   }
   
   .leaves-table th {
-    background-color: #0077B6; /* A darker shade for pending leaves for emphasis */
+    background-color: #2d2e5c; /* A darker shade for pending leaves for emphasis */
     color: white;
   }
   

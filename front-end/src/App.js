@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import './App.css';
+import { Navigate } from "react-router-dom";
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Navbar from './components/dashbord/Navbar';
 import Home from './pages/admin/Home';
@@ -19,6 +20,7 @@ import { ApprovedLeaves } from './components/CongesComponents copy/ApproveLeave/
 import TotalLeaves from './components/CongesComponents copy/TotalLeave/TotalLeaves';
 import GrantLeave from './components/CongesComponents copy/GrantLeave/GrantLeave';
 
+
 const leavesData = [
   { id: 1, name: 'Liam', department: 'Development', date: '2021-09-09', reason: 'THIS IS A DEMO TEST', status: 'Pending' },
   { id: 2, name: 'Cory B Puente', department: 'UX', date: '2021-07-03', reason: 'Not feeling well, need to quarantine myself!', status: 'Approved' },
@@ -34,8 +36,21 @@ const approveLeave = (id) => {
 };
 
 function App() {
+  function ProtectedRoute({ children }) {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      // Utilisateur non authentifié, redirection vers la page de connexion
+      return <Navigate to="/connexion" />;
+    }
+    // Utilisateur authentifié, rendu du composant enfant
+    return children;
+  }
   return (
     <BrowserRouter>
+        <Routes>
+        <Route path='connexion' element={<Connexion />} />
+        </Routes>
+        <ProtectedRoute>
       <Template sidebar={<Sidebar/>} navbar={<Navbar/>}>
         <Routes>
             <Route index element={<Home/> }/>
@@ -53,6 +68,7 @@ function App() {
             <Route path='rapport' element={<Rapport />}/>
         </Routes>            
       </Template>
+      </ProtectedRoute>
     </BrowserRouter>  
   );
 }
