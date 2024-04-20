@@ -21,7 +21,7 @@ function Connexion() {
     e.preventDefault();
     try {
       await axios.post("http://localhost:8000/api/login", { email, password });
-      navigate("/");  // Rediriger après connexion réussie
+      navigate("/");  
     } catch (error) {
       if (error.response) {
         setError(error.response.data.message);

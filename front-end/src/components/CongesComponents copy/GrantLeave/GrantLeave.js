@@ -87,7 +87,7 @@ const GrantLeave = () => {
       <label className="form-label">Status:</label>
       <select className="form-select" value={status} onChange={e => setStatus(e.target.value)} required>
         <option value="">Sélectionnez le statut</option>
-        <option value="En attente">En attente</option>
+        <option value="En_Attente">En_Attente</option>
         <option value="Approuvé">Approuvé</option>
         <option value="Rejeté">Rejeté</option>
       </select>
