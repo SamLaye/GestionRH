@@ -25,9 +25,9 @@ class LeaveFactory extends Factory
             'reason' => $this->faker->sentence,
             'start_date' => $startDate = $this->faker->date(),
             'end_date' => $this->faker->date('Y-m-d', $startDate), // Assure que end_date est après start_date
-            'status' => $this->faker->randomElement(['pending', 'approved', 'rejected']),
+            'status' => $this->faker->randomElement(['en attente', 'approuvé', 'rejeté']),
             'approved_by_id' => function (array $leave) {
-                return $leave['status'] === 'approved' ? Employee::where('is_admin', true)->inRandomOrder()->first()->id : null;
+                return $leave['status'] === 'apprové' ? Employee::where('is_admin', true)->inRandomOrder()->first()->id : null;
             },
         ];
     }
