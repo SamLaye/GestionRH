@@ -16,6 +16,7 @@
   }
   
   .pending { background-color: orange; }
+  .En_Attente { background-color: orange; }
   .approved { background-color: green; }
   .total { background-color: blue; }
   .add { background-color: red; }
@@ -187,12 +188,12 @@
   font-size: 0.9em;
 }
 
-.status-tag.approved {
+.status-tag.approve {
   background-color: #28a745; 
 }
 
-.status-tag.pending {
-  background-color: #ffc107; 
+.status-tag.En_Attente {
+  background-color: #FF9800 !important;
 }
 /* ================================================================== */
 

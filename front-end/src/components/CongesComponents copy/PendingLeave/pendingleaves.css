@@ -27,8 +27,8 @@
   }
   
   /* Specific styles for PendingLeaves */
-  .status.pending {
-    background-color: #FFC107; /* Highlight the pending status */
+  .status.En_Attente {
+    background-color: #FFC107; 
     padding: 0.25em 0.75em;
     border-radius: 4px;
     font-weight: bold;
