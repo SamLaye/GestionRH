@@ -71,8 +71,7 @@ function AjoutEmploye() {
   return (
     <div>
       <Button
-        variant="secondary"
-        className="my-2 rounded-0 border-0 bg-secondary"
+        className="my-2 rounded-0 border-0 employe"
         onClick={handleShow}
       >
         <AiOutlinePlus className="me-3" />
@@ -169,8 +168,7 @@ function AjoutEmploye() {
             </Form.Group>
             <div className="text-end me-2">
               <Button
-                className="border-0 rounded-0"
-                variant="secondary"
+                className="border-0 rounded-0 employe"
                 type="submit"
               >
                 Valider
