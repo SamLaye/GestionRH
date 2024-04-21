@@ -1,7 +1,8 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap/dist/js/bootstrap.bundle.min.js'
+// Import des modules et composants nécessaires
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './App.css';
-import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/dashbord/Navbar';
 import Home from './pages/admin/Home';
 import Sidebar from './components/dashbord/Sidebar';
@@ -18,12 +19,11 @@ import { PendingLeaves } from './components/CongesComponents copy/PendingLeave/P
 import { ApprovedLeaves } from './components/CongesComponents copy/ApproveLeave/ApprovedLeaves';
 import TotalLeaves from './components/CongesComponents copy/TotalLeave/TotalLeaves';
 import GrantLeave from './components/CongesComponents copy/GrantLeave/GrantLeave';
-import AuthRequired from './pages/connexion/AuthRequired';
 import Inscription from './pages/connexion/Inscription';
 
-
-
+// Fonction principale de l'application
 function App() {
+  // Composant pour les routes protégées
   function ProtectedRoute({ children }) {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -33,32 +33,33 @@ function App() {
     // Utilisateur authentifié, rendu du composant enfant
     return children;
   }
+
   return (
     <BrowserRouter>
-        <Routes>
+      <Routes>
         <Route path='connexion' element={<Connexion />} />
         <Route path='inscription' element={<Inscription />} />
-        </Routes>
-        <ProtectedRoute>
-
-      <Template sidebar={<Sidebar/>} navbar={<Navbar/>}>
-        <Routes>
-            <Route index element={<Home/> }/>
-            <Route path='employes' element={<Employes/>}/>
+      </Routes>
+      <ProtectedRoute>
+        <Template sidebar={<Sidebar />} navbar={<Navbar />}>
+          <Routes>
+            <Route index element={<Home />} />
+            <Route path='employes' element={<Employes />} />
             <Route path='conges' element={<Conges />}>
-               <Route index element={<PendingLeaves   />} />
-               <Route path="approved-leaves" element={<ApprovedLeaves  />} />
-               <Route path="total-leaves" element={<TotalLeaves  />} />
-               <Route path="leave-type" element={<LeaveTypeSection  />} />
-               <Route path="view-employees" element={<GrantLeave  />} />
+              <Route index element={<PendingLeaves />} />
+              <Route path="approved-leaves" element={<ApprovedLeaves />} />
+              <Route path="total-leaves" element={<TotalLeaves />} />
+              <Route path="leave-type" element={<LeaveTypeSection />} />
+              <Route path="view-employees" element={<GrantLeave />} />
             </Route>
-            <Route path='presence' element={<Presence />}/>
-            <Route path='notes' element={<Notes />}/>
-            <Route path='payment' element={<Paie />}/>
-            <Route path='rapport' element={<Rapport />}/>
-        </Routes>            
-      </Template>
-    </BrowserRouter>  
+            <Route path='presence' element={<Presence />} />
+            <Route path='notes' element={<Notes />} />
+            <Route path='payment' element={<Paie />} />
+            <Route path='rapport' element={<Rapport />} />
+          </Routes>
+        </Template>
+      </ProtectedRoute>
+    </BrowserRouter>
   );
 }
 
