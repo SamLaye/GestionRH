@@ -40,6 +40,7 @@ function App() {
         <Route path='inscription' element={<Inscription />} />
         </Routes>
         <ProtectedRoute>
+
       <Template sidebar={<Sidebar/>} navbar={<Navbar/>}>
         <Routes>
             <Route index element={<Home/> }/>
@@ -57,7 +58,6 @@ function App() {
             <Route path='rapport' element={<Rapport />}/>
         </Routes>            
       </Template>
-      </ProtectedRoute>
     </BrowserRouter>  
   );
 }
