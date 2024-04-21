@@ -90,6 +90,10 @@ body {
   -webkit-transition: all 0.5s;
 }
 
+.employe{
+   background-color: #2d2e5c;
+}
+
 .sidebar-title {
   display: flex;
   align-items: center;

@@ -47,10 +47,6 @@ function App() {
   }
   return (
     <BrowserRouter>
-        <Routes>
-        <Route path='connexion' element={<Connexion />} />
-        </Routes>
-        <ProtectedRoute>
       <Template sidebar={<Sidebar/>} navbar={<Navbar/>}>
         <Routes>
             <Route index element={<Home/> }/>
@@ -68,7 +64,6 @@ function App() {
             <Route path='rapport' element={<Rapport />}/>
         </Routes>            
       </Template>
-      </ProtectedRoute>
     </BrowserRouter>  
   );
 }
