@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\PayementController;
 use App\Http\Controllers\LeaveTypeController;
 use App\Http\Controllers\NoteController;
 
@@ -49,13 +50,22 @@ Route::post('/leaves/approve/{id}', [LeaveController::class, 'approveLeave']);
 
 //+++++++++++++++++++++++++++++employee+++++++++++++++++++++++++++++++++++++++++++
 
-Route::get('/employees', [EmployeeController::class, 'index']);
+Route::get('/employes', [EmployeeController::class, 'index']);
 Route::get('/employees/create', [EmployeeController::class, 'create']);
-Route::post('/employees', [EmployeeController::class, 'store']);
+Route::post('/employes', [EmployeeController::class, 'store']);
+Route::get('/employes/{employe}/payments', [EmployeeController::class, 'getEmployeePayments']);
+Route::post('employes', [EmployeeController::class, 'createEmploye']);
 Route::get('/employees/{employee}', [EmployeeController::class, 'show']);
 Route::get('/employees/{employee}/edit', [EmployeeController::class, 'edit']);
 Route::put('/employees/{employee}', [EmployeeController::class, 'update']);
 Route::delete('/employees/{employee}', [EmployeeController::class, 'destroy']);
+
+//+++++++++++++++++++++++++++++payement+++++++++++++++++++++++++++++++++++++++++++
+
+Route::get('/payements', [PayementController::class, 'index']);
+Route::get('/payements/create', [PayementController::class, 'create']);
+Route::post('payements', [PayementController::class, 'createPayement']);
+
 
 //++++++++++++++++++++++NOTES INTERNES+++++++++++++++++++++++++++++++++++++++++++++++++++++
 

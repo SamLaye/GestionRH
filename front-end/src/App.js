@@ -18,6 +18,8 @@ import { PendingLeaves } from './components/CongesComponents copy/PendingLeave/P
 import { ApprovedLeaves } from './components/CongesComponents copy/ApproveLeave/ApprovedLeaves';
 import TotalLeaves from './components/CongesComponents copy/TotalLeave/TotalLeaves';
 import GrantLeave from './components/CongesComponents copy/GrantLeave/GrantLeave';
+import AuthRequired from './pages/connexion/AuthRequired';
+import Inscription from './pages/connexion/Inscription';
 
 
 
@@ -35,18 +37,19 @@ function App() {
     <BrowserRouter>
         <Routes>
         <Route path='connexion' element={<Connexion />} />
+        <Route path='inscription' element={<Inscription />} />
         </Routes>
         <ProtectedRoute>
       <Template sidebar={<Sidebar/>} navbar={<Navbar/>}>
         <Routes>
             <Route index element={<Home/> }/>
             <Route path='employes' element={<Employes/>}/>
-            <Route path='conges' element={<Conges  />}>
+            <Route path='conges' element={<Conges />}>
                <Route index element={<PendingLeaves   />} />
                <Route path="approved-leaves" element={<ApprovedLeaves  />} />
                <Route path="total-leaves" element={<TotalLeaves  />} />
                <Route path="leave-type" element={<LeaveTypeSection  />} />
-               <Route path="view-employees" element={<GrantLeave />} />
+               <Route path="view-employees" element={<GrantLeave  />} />
             </Route>
             <Route path='presence' element={<Presence />}/>
             <Route path='notes' element={<Notes />}/>

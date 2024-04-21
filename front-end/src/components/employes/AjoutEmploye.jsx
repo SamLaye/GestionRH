@@ -1,194 +1,183 @@
+
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { AiOutlinePlus } from "react-icons/ai";
 
-function AjoutEmploye({ onEmployeeAdded }) {
-  const [show, setShow] = useState(false);
-  const [employeeDetails, setEmployeeDetails] = useState({
-    firstName: "",
-    lastName: "",
+function AjoutEmploye() {
+  const [formData, setFormData] = useState({
+    firstname: "",
+    lastname: "",
     email: "",
-    hireDate: "",
-    gender: "",
-    idNumber: "",
-    phoneNumber: "",
-    address: "",
-    birthDate: "",
-    employeeId: "",
-    department: "",
-    position: "",
+    date: "",
+    adress: "",
+    departement: "",
   });
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [show, setShow] = useState(false);
 
-  const handleSubmit = () => {
-    onEmployeeAdded(employeeDetails);
-    // Reset form fields and close modal
-    setEmployeeDetails({
-      firstName: "",
-      lastName: "",
-      email: "",
-      hireDate: "",
-      gender: "",
-      idNumber: "",
-      phoneNumber: "",
-      address: "",
-      birthDate: "",
-      employeeId: "",
-      department: "",
-      position: "",
-    });
-    setShow(false);
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
   };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const newEmployee = new FormData();
+
+      // Ajouter les champs et leurs valeurs à FormData
+      newEmployee.append("firstname", formData.firstname);
+      newEmployee.append("lastname", formData.lastname);
+      newEmployee.append("email", formData.email);
+      newEmployee.append("date", formData.date);
+      newEmployee.append("adress", formData.adress);
+      newEmployee.append("departement", formData.departement);
+
+      const response = await fetch("http://127.0.0.1:8000/api/employes", {
+        method: "POST",
+        body: newEmployee,
+      });
+
+      if (!response.ok) {
+        throw new Error("Erreur lors de la création de l'employé");
+      }
+
+      // Réinitialiser les champs du formulaire après la création réussie de l'employé
+      setFormData({
+        firstname: "",
+        lastname: "",
+        email: "",
+        date: "",
+        adress: "",
+        departement: "",
+      });
+
+      handleClose(); // Fermer la modale après la création réussie de l'employé
+    } catch (error) {
+      console.error(
+        "Une erreur est survenue lors de la création de l'employé:",
+        error.message
+      );
+      // Gérer l'erreur ici, par exemple, afficher un message d'erreur à l'utilisateur
+    }
+  };
+
 
   return (
     <div>
       <Button
-        variant="primary"
-        className="mt-2 rounded-0 border-0 bg-secondary"
+        variant="secondary"
+        className="my-2 rounded-0 border-0 bg-secondary"
         onClick={handleShow}
       >
         <AiOutlinePlus className="me-3" />
         Nouvel employé
       </Button>
-      <Modal show={show} onHide={handleClose} className="border-primary">
-        <Modal.Header className="bg-primary">
+
+      <Modal
+        show={show}
+        onHide={handleClose}
+        className="border-primary modal-dialog modal-lg"
+      >
+        <Modal.Header className="bg-secondary">
           <Modal.Title className="text-white">Nouvel employé</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <div className="row">
-              <div className="col-6">
-                <Form.Label>Prénom</Form.Label>
-                <Form.Control
-                  className="border-0 border-bottom rounded-0"
-                  type="name"
-                  placeholder="entrer votre prenom"
-                  required
-                />
+          <Form onSubmit={handleSubmit}>
+            <Form.Group
+              className="text-black"
+              controlId="exampleForm.ControlInput1"
+            >
+              <div className="row">
+                <div className="mb-2 col-6">
+                  <Form.Label>Prénom</Form.Label>
+                  <Form.Control
+                    className="rounded-0"
+                    type="name"
+                    name="firstname"
+                    value={formData.firstname}
+                    onChange={handleChange}
+                    placeholder="Entrer votre prénom"
+                    required
+                  />
+                </div>
+                <div className="mb-2 col-6">
+                  <Form.Label>Nom</Form.Label>
+                  <Form.Control
+                    className="rounded-0"
+                    type="name"
+                    name="lastname"
+                    value={formData.lastname}
+                    onChange={handleChange}
+                    placeholder="Entrer votre nom"
+                    required
+                  />
+                </div>
+                <div className="mb-2 col-6">
+                  <Form.Label>Email</Form.Label>
+                  <Form.Control
+                    className="rounded-0"
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="Entrer votre email"
+                    required
+                  />
+                </div>
+                <div className="mb-2 col-6">
+                  <Form.Label>Date d'embauche</Form.Label>
+                  <Form.Control
+                    className="rounded-0"
+                    type="number"
+                    name="date"
+                    value={formData.date}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="mb-2 col-6">
+                  <Form.Label>Adresse</Form.Label>
+                  <Form.Control
+                    className="rounded-0"
+                    type="text"
+                    name="adress"
+                    value={formData.adress}
+                    onChange={handleChange}
+                    placeholder="Entrer votre adresse"
+                    required
+                  />
+                </div>
+                <div className="mb-2 col-6">
+                  <Form.Label>Département</Form.Label>
+                  <Form.Control
+                    className="rounded-0"
+                    type="text"
+                    name="departement"
+                    value={formData.departement}
+                    onChange={handleChange}
+                    placeholder="Entrer votre département"
+                    required
+                  />
+                </div>
               </div>
-              <div className="col-6">
-                <Form.Label>Nom</Form.Label>
-                <Form.Control
-                  className="border-0 border-bottom rounded-0"
-                  type="name"
-                  placeholder="entrer votre nom"
-                  required
-                />
-              </div>
-              <div className="col-6">
-                <Form.Label>Email</Form.Label>
-                <Form.Control
-                  className="border-0 border-bottom rounded-0"
-                  type="email"
-                  placeholder="entrer votre email"
-                  required
-                />
-              </div>
-              <div className="col-6">
-                <Form.Label>Date d'embauche</Form.Label>
-                <Form.Control
-                  className="border-0 border-bottom rounded-0"
-                  type="date"
-                  required
-                />
-              </div>
-              <div className="col-6">
-                <Form.Label className="me-3">Sexe</Form.Label>
-                <input
-                  className="border-0 border-bottom rounded-0"
-                  class="form-check-input"
-                  type="radio"
-                  name="inlineRadioOptions"
-                  id="inlineRadio1"
-                  value="option1"
-                  required
-                />
-                <label class="form-check-label" for="inlineRadio1">
-                  Homme
-                </label>{" "}
-                <input
-                  className="border-0 border-bottom rounded-0"
-                  class="form-check-input"
-                  type="radio"
-                  name="inlineRadioOptions"
-                  id="inlineRadio1"
-                  value="option1"
-                  required
-                />
-                <label class="form-check-label" for="inlineRadio1">
-                  Femme
-                </label>
-              </div>
-              <div className="col-6">
-                <Form.Label>CNI</Form.Label>
-                <Form.Control
-                  className="border-0 border-bottom rounded-0"
-                  type="number"
-                />
-              </div>
-              <div className="col-6">
-                <Form.Label>Telephone</Form.Label>
-                <Form.Control
-                  className="border-0 border-bottom rounded-0"
-                  type="date"
-                />
-              </div>
-              <div className="col-6">
-                <Form.Label>Adresse</Form.Label>
-                <Form.Control
-                  className="border-0 border-bottom rounded-0"
-                  type="text"
-                />
-              </div>
-              <div className="col-6">
-                <Form.Label>Date de naissance</Form.Label>
-                <Form.Control
-                  className="border-0 border-bottom rounded-0"
-                  type="date"
-                />
-              </div>
-              <div className="col-6">
-                <Form.Label>Matricule</Form.Label>
-                <Form.Control
-                  className="border-bottom border-0 border-bottom"
-                  type="number"
-                />
-              </div>
-              <div className="col-6 mt-3">
-                <select
-                  className="border-0 border-bottom rounded-0"
-                  aria-label="Default select example"
-                >
-                  <option selected>Departement</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
-              </div>
-              <div className="col-6">
-                <Form.Label>Fonction</Form.Label>
-                <Form.Control
-                  className="border-bottom border-0 rounded-0"
-                  type="text"
-                />
-              </div>
+            </Form.Group>
+            <div className="text-end me-2">
+              <Button
+                className="border-0 rounded-0"
+                variant="secondary"
+                type="submit"
+              >
+                Valider
+              </Button>
             </div>
-          </Form.Group>
+          </Form>
         </Modal.Body>
-        <div className="text-end my-1 me-2">
-          <Button
-            className="border-0 rounded-0"
-            variant="primary"
-            type="submit"
-            onClick={handleSubmit}
-          >
-            Valider
-          </Button>
-        </div>
       </Modal>
     </div>
   );

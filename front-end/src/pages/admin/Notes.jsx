@@ -30,6 +30,7 @@ function Notes() {
       // Gérer la réponse - par exemple, mettre à jour l'état avec la nouvelle note
       toast.success('Le congé a été accordé avec succès !');
       handleCloseModal()
+      fetchNotes();
     } catch (error) {
       // Gérer l'erreur - par exemple, afficher un message d'erreur
       toast.error('Une erreur est survenue lors de l\'ajout du type de congé. !');
@@ -37,17 +38,18 @@ function Notes() {
     }
   };
 //recuperation des notes++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+const fetchNotes = async () => {
+  try {
+    // Remplacer avec l'URL de votre API Laravel
+    const response = await axios.get('http://localhost:8000/api/notes');
+    setNotes(response.data); // Stocker les notes dans l'état
+  } catch (error) {
+    console.error(error);
+    
+  }
+};
 useEffect(() => {
-  const fetchNotes = async () => {
-    try {
-      // Remplacer avec l'URL de votre API Laravel
-      const response = await axios.get('http://localhost:8000/api/notes');
-      setNotes(response.data); // Stocker les notes dans l'état
-    } catch (error) {
-      console.error(error);
-      
-    }
-  };
+  
   fetchNotes();
 }, []); 
 
@@ -72,7 +74,7 @@ useEffect(() => {
               <div className="container-fluid">
                 <div className="d-flex justify-content-between align-items-center">
                   <p className='text-white'> <BsPatchCheckFill /> <span className='fs-5 my-3'> Notes internes </span> </p>
-                  <Button className='fs' variant="light" size="sm">
+                  <Button className='fs' variant="light" size="sm" onClick={handleShowModal}>
                     Ajouter une note
                   </Button>{' '}
 
@@ -82,14 +84,13 @@ useEffect(() => {
 
             <div className="container-fluid mt-2 p-3">
               <div className="d-flex">
-                <Form.Control style={{ width: "15%" }} size="sm" type="text" placeholder="Titre/Conten" />
+                <Form.Control style={{ width: "15%" }} size="sm" type="text" placeholder="Titre/Content" />
                 <Form.Select style={{ width: "15%" }} className='mx-2' aria-label="Default select example">
                   <option>Département</option>
                   <option value="1">One</option>
                   <option value="2">Two</option>
                   <option value="3">Three</option>
                 </Form.Select>
-                <Form.Control style={{ width: "15%" }} size="sm" type="text" placeholder="Rechercher..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
                 <Button style={{ background: '#2d2e5c',border:'none' }} onClick={handleSearch} className="ms-2">
                   Rechercher
                 </Button>
@@ -116,7 +117,7 @@ useEffect(() => {
                 </div>
               </div>
               <div className="text-center mt-2">
-                <Button style={{ background: '#2d2e5c', border:'none' }} onClick={handleShowModal}>
+                <Button style={{ background: '#2d2e5c', border:'none' }} >
                   + Marqueeer une note interne
                 </Button>
               </div>

@@ -1,4 +1,12 @@
 import './bootstrap';
+<<<<<<< HEAD
+
+import Alpine from 'alpinejs';
+
+window.Alpine = Alpine;
+
+Alpine.start();
+=======
 import '../css/app.css';
 
 import { createApp, h } from 'vue';
@@ -21,3 +29,4 @@ createInertiaApp({
         color: '#4B5563',
     },
 });
+>>>>>>> fd498a94693e51d17be3b2f4f8a7653d97425448
