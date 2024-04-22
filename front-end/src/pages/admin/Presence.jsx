@@ -3,12 +3,16 @@ import './EmployeePresence.css';
 import { BsChevronCompactLeft, BsChevronCompactRight, BsPatchCheckFill } from "react-icons/bs";
 import Form from 'react-bootstrap/Form';
 import { AiFillPlusSquare } from "react-icons/ai";
-import { IoHomeOutline } from "react-icons/io5";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 function Presence() {
   const [currentDate, setCurrentDate] = useState(new Date());
+  const [selectedEmployee, setSelectedEmployee] = useState(null);
+  const [timeIn, setTimeIn] = useState('');
+  const [timeOut, setTimeOut] = useState('');
+  const [notes, setNotes] = useState('');
+  const [show, setShow] = useState(false);
 
   const employees = [
     { id: 1, name: 'Salarié 1 Test' },
@@ -25,15 +29,41 @@ function Presence() {
     setCurrentDate(prevDate => new Date(prevDate.setDate(prevDate.getDate() + 1)));
   };
 
-  // const handlePresenceMarking = (employeeId) => {
-  //     // Logique pour marquer la présence
-  //     console.log(`Marquer la présence pour l'employé ID: ${employeeId}`);
-  // };
+  const handleShow = (employee) => {
+    setSelectedEmployee(employee);
+    setShow(true);
+  };
 
-  const [show, setShow] = useState(false);
+  const handleClose = () => {
+    setShow(false);
+    setSelectedEmployee(null);
+    setTimeIn('');
+    setTimeOut('');
+    setNotes('');
+  };
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handlePresenceMarking = () => {
+    if (!selectedEmployee || !timeIn || !timeOut) {
+      // Vérifier si toutes les données nécessaires sont remplies
+      console.error('Veuillez remplir toutes les informations nécessaires.');
+      return;
+    }
+
+    // Logique pour enregistrer la présence
+    const presenceData = {
+      employeeId: selectedEmployee.id,
+      timeIn: timeIn,
+      timeOut: timeOut,
+      notes: notes
+    };
+
+    // Envoi des données de présence à votre API ou à votre backend pour enregistrement
+    console.log('Présence enregistrée avec succès:', presenceData);
+    // Vous pouvez implémenter la logique d'enregistrement avec votre API ici
+
+    // Fermer le modal après avoir enregistré la présence
+    handleClose();
+  };
 
   return (
     <div>
@@ -74,18 +104,12 @@ function Presence() {
             </div>
             <div className="container-fluid p-3">
               <table className='table table-striped table-hover'>
-                {/*<thead>
-                  <tr>
-                      <th>Nom/Prénom/Email</th>
-                      <th>Action</th>
-                  </tr>
-                  </thead>*/}
                 <tbody>
                   {employees.map(employee => (
                     <tr key={employee.id}>
                       <td>{employee.name}</td>
                       <td className='text-end'>
-                        <button onClick={handleShow}><AiFillPlusSquare /></button>
+                        <button onClick={() => handleShow(employee)}><AiFillPlusSquare /></button>
                       </td>
                     </tr>
                   ))}
@@ -109,7 +133,7 @@ function Presence() {
               <Form>
                 <Form.Group className="mb-3" controlId="employeeSelect">
                   <Form.Label>Sélectionner l'employé :</Form.Label>
-                  <Form.Select>
+                  <Form.Select onChange={(e) => setSelectedEmployee(employees.find(emp => emp.id === parseInt(e.target.value)))}>
                     <option>Choisir...</option>
                     {employees.map(employee => (
                       <option key={employee.id} value={employee.id}>{employee.name}</option>
@@ -118,15 +142,15 @@ function Presence() {
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="timeIn">
                   <Form.Label>Heure d'entrée :</Form.Label>
-                  <Form.Control type="time" />
+                  <Form.Control type="time" value={timeIn} onChange={(e) => setTimeIn(e.target.value)} />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="timeOut">
                   <Form.Label>Heure de sortie :</Form.Label>
-                  <Form.Control type="time" />
+                  <Form.Control type="time" value={timeOut} onChange={(e) => setTimeOut(e.target.value)} />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="notes">
                   <Form.Label>Notes :</Form.Label>
-                  <Form.Control as="textarea" rows={3} placeholder="Ajouter des notes..." />
+                  <Form.Control as="textarea" rows={3} value={notes} onChange={(e) => setNotes(e.target.value)} placeholder="Ajouter des notes..." />
                 </Form.Group>
               </Form>
             </Modal.Body>
@@ -135,7 +159,7 @@ function Presence() {
               <Button variant="secondary" onClick={handleClose}>
                 Annulé
               </Button>
-              <Button style={{ background: '#2d2e5c',border:'none' }} >Enregistré</Button>
+              <Button style={{ background: '#2d2e5c',border:'none' }} onClick={handlePresenceMarking}>Enregistré</Button>
             </Modal.Footer>
           </Modal>
         </div>
