@@ -28,7 +28,7 @@ const PendingLeaves = () => {
   const fetchPendingLeaves = async () => {
     try {
       const response = await axios.get('http://localhost:8000/api/leaves/pending');
-      const pendingLeavesData = response.data.filter(leave => leave.status === 'En_Attente');
+      const pendingLeavesData = response.data.filter(leave => leave.status === 'En Attente');
       setPendingLeaves(pendingLeavesData);
     } catch (error) {
       console.error('Error fetching leaves:', error);

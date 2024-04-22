@@ -2,7 +2,7 @@ import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
 
 export default function AuthRequired(){
-    // const token = localStorage("auth_token")
+    // const token = localStorage("token")
     // if(!token){
     //     return <Redirect to="/connexion" />
     // }

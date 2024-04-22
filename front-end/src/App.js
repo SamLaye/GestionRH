@@ -20,6 +20,7 @@ import TotalLeaves from './components/CongesComponents copy/TotalLeave/TotalLeav
 import GrantLeave from './components/CongesComponents copy/GrantLeave/GrantLeave';
 import AuthRequired from './pages/connexion/AuthRequired';
 import Inscription from './pages/connexion/Inscription';
+import Logout from './pages/connexion/Deconection';
 
 
 
@@ -38,6 +39,7 @@ function App() {
         <Routes>
         <Route path='connexion' element={<Connexion />} />
         <Route path='inscription' element={<Inscription />} />
+        {/* <Route path='logout' element={<Logout />} /> */}
         </Routes>
         <ProtectedRoute>
       <Template sidebar={<Sidebar/>} navbar={<Navbar/>}>

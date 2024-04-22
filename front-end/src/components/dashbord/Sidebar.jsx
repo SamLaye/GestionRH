@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { BsGrid1X2Fill, BsPeopleFill } from "react-icons/bs";
 import { GrUserWorker, GrContactInfo } from "react-icons/gr";
 import { RiBankFill } from "react-icons/ri";
@@ -8,8 +8,12 @@ import { TbReportAnalytics } from "react-icons/tb";
 import { FaTasks } from "react-icons/fa";
 import { IoTimeOutline } from "react-icons/io5";
 import { PiSignOutBold } from "react-icons/pi";
+import axios from "axios";
 
 function Sidebar() {
+  const navigate = useNavigate();
+  const [isAdmin, setIsAdmin] = useState(true);
+
   const admin = [
     {
       path: "/",
@@ -72,13 +76,20 @@ function Sidebar() {
       icone: <IoTimeOutline className="icon" />,
       _label: "Horaires et Présences",
     },
-    {
+    {path: "logout",
       icone: <PiSignOutBold className="icon" />,
       _label: "Déconnexion",
     },
   ];
 
-  const [isAdmin, setIsAdmin] = useState(true);
+  const handleLogout = async () => {
+    try {
+      await axios.post('/api/auth/logout');
+      navigate('/connexion');
+    } catch (error) {
+      console.error('Erreur lors de la déconnexion :', error);
+    }
+  };
 
   return (
     <>
@@ -90,7 +101,7 @@ function Sidebar() {
       <ul className="sidebar-list">
         {isAdmin
           ? admin.map((item) => (
-            <NavLink to={item.path} style={{ textDecoration: "none" }}>
+            <NavLink to={item.path} onClick={item.path === 'logout' ? handleLogout : null} style={{ textDecoration: "none" }}>
               <li className="sidebar-list-item">
                 {item.icone} {item._label}
               </li>

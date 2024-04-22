@@ -64,7 +64,7 @@ if (!leavesData.length) {
               <td>{leave.start_date}</td>
               <td>{leave.end_date}</td>
               <td>
-              <span className={`status-tag ${leave.status.toLowerCase() === 'en_attente' ? 'En_Attente' : leave.status.toLowerCase()}`}>
+              <span className={`status-tag ${leave.status.toLowerCase() === 'en attente' ? 'En Attente' : leave.status.toLowerCase()}`}>
     {leave.status}
     </span>
               </td>

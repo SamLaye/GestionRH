@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 axios.defaults.withCredentials = true;  // Important pour envoyer et recevoir des cookies
 
@@ -44,7 +45,8 @@ function Connexion() {
             <input type="password" className="form-control" id="password" value={password} onChange={e => setPassword(e.target.value)} />
           </div>
           {error && <div className="alert alert-danger">{error}</div>}
-          <button type="submit" className="btn btn-primary mt-5">Connexion</button>
+          <button type="submit" style={{ background: '#2d2e5c',border:'none' }} className="btn btn-primary mt-5">Connexion</button> <br />
+          <span style={{ color: '#2d2e5c' }}>Vous ne disposez pas de compte , cliquez ici <Link to="/inscription">S'inscrire</Link></span>
         </form>
       </div>
     </div>

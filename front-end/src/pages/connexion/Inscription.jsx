@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Inscription() {
   const [name, setName] = useState("");
@@ -36,7 +37,8 @@ function Inscription() {
             <input type="password" className="form-control" id="password" value={password} onChange={e => setPassword(e.target.value)} />
           </div>
           {error && <div className="alert alert-danger">{error}</div>}
-          <button type="submit" className="btn btn-primary mt-4">S'inscrire</button>
+          <button type="submit" style={{ background: '#2d2e5c',border:'none' }} className="btn btn-primary mt-4">S'inscrire</button> <br />
+          <span style={{ color: '#2d2e5c' }}>Vous disposez d'un compte , cliquez ici <Link to="/connexion">Se connecter</Link></span>
         </form>
       </div>
     </div>
