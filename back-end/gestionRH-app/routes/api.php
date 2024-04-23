@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\PayementController;
 use App\Http\Controllers\LeaveTypeController;
+use App\Http\Controllers\NoteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +22,17 @@ use App\Http\Controllers\LeaveTypeController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'auth'
+], function ($router) {
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/register', [AuthController::class, 'register']);
+    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::post('/refresh', [AuthController::class, 'refresh']);
+    Route::get('/user-profile', [AuthController::class, 'userProfile']);    
 });
 //+++++++++++++++++++++++++Type de conges+++++++++++++++++++++++++++++++++++++++++++++
 Route::get('/leave-types', [LeaveTypeController::class, 'index']);
@@ -54,3 +67,8 @@ Route::get('/payements/create', [PayementController::class, 'create']);
 Route::post('payements', [PayementController::class, 'createPayement']);
 
 
+//++++++++++++++++++++++NOTES INTERNES+++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+Route::get('/notes', [NoteController::class, 'getNotes']);
+Route::post('/notes', [NoteController::class,'store'] );

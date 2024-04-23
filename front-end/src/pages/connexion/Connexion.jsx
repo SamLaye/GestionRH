@@ -20,8 +20,8 @@ function Connexion() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8000/api/login", { email, password });
-      navigate("/");  // Rediriger après connexion réussie
+      await axios.post("http://127.0.0.1:8000/api/auth/login", { email, password });
+      navigate("/");  
     } catch (error) {
       if (error.response) {
         setError(error.response.data.message);

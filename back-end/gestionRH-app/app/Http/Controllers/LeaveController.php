@@ -31,7 +31,7 @@ public function index()
     public function getPendingLeaves()
     {
         $pendingLeaves = Leave::with('employee')
-                              ->where('status', 'Pending')
+                              ->where('status', 'En_Attente')
                               ->get();
     
         return response()->json($pendingLeaves);
@@ -41,7 +41,7 @@ public function index()
     public function getApprovesLeaves()
     {
         $ApprovedLeaves = Leave::with('employee')
-                              ->where('status', 'approved')
+                              ->where('status', 'approuvé')
                               ->get();
     
         return response()->json($ApprovedLeaves);
@@ -58,7 +58,7 @@ public function index()
 public function approveLeave($id)
 {
     $leave = Leave::findOrFail($id);
-    $leave->status = 'Approved';
+    $leave->status = 'Approuvé';
     $leave->save();
 
     return response()->json(['message' => 'Leave approved successfully']);

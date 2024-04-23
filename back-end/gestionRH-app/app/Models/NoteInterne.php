@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class NoteInterne extends Model
 {
     use HasFactory;
+    protected $table = 'notes';
+    protected $fillable = [
+        'titre',
+        'contenu',
+        'departement'
+    ];
 }

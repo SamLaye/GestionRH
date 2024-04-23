@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class TypeCongé extends Model
 {
     use HasFactory;
-
-    protected $table = 'type_conges';
+    public $timestamps = false;
+    protected $table = 'type-conges';
     protected $fillable = [
         'name', 'description', 'max_duration'
     ];
