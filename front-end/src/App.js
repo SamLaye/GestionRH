@@ -13,13 +13,11 @@ import Paie from './pages/admin/Paie';
 import Presence from './pages/admin/Presence';
 import Rapport from './pages/admin/Rapport';
 import Notes from './pages/admin/Notes';
-import Connexion from './pages/connexion/Connexion';
 import LeaveTypeSection from './components/CongesComponents copy/LeaveType/LeaveTypeSection';
 import { PendingLeaves } from './components/CongesComponents copy/PendingLeave/PendingLeaves';
 import { ApprovedLeaves } from './components/CongesComponents copy/ApproveLeave/ApprovedLeaves';
 import TotalLeaves from './components/CongesComponents copy/TotalLeave/TotalLeaves';
 import GrantLeave from './components/CongesComponents copy/GrantLeave/GrantLeave';
-import Inscription from './pages/connexion/Inscription';
 
 // Fonction principale de l'application
 function App() {
@@ -36,11 +34,6 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path='connexion' element={<Connexion />} />
-        <Route path='inscription' element={<Inscription />} />
-      </Routes>
-      <ProtectedRoute>
         <Template sidebar={<Sidebar />} navbar={<Navbar />}>
           <Routes>
             <Route index element={<Home />} />
@@ -58,7 +51,6 @@ function App() {
             <Route path='rapport' element={<Rapport />} />
           </Routes>
         </Template>
-      </ProtectedRoute>
     </BrowserRouter>
   );
 }

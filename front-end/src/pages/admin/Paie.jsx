@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
 // import "bootstrap/dist/css/bootstrap.min.css";
 // import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 function Paie() {
+   const [employees, setEmployees] = useState([]);
   const [formData, setFormData] = useState({
     employee_id: "",
     mois: "",
@@ -20,10 +21,30 @@ function Paie() {
     retenue_pret: "",
   });
 
+  useEffect(() => {
+    // Fonction pour récupérer la liste des employés depuis votre backend
+    const fetchEmployees = async () => {
+      try {
+        const response = await axios.get("http://127.0.0.1:8000/api/employes"); // Endpoint pour récupérer les employés
+        setEmployees(response.data); // Met à jour la liste des employés
+      } catch (error) {
+        console.error("Error fetching employees:", error);
+      }
+    };
+
+    fetchEmployees(); // Appel de la fonction pour récupérer les employés au chargement du composant
+  }, []);
+
   const handleChange = (e) => {
+    const selectedEmployee = employees.find(
+      (employee) => employee.id === e.target.value
+    );
     setFormData({
+      // ...formData,
+      // [e.target.name]: e.target.value,
       ...formData,
-      [e.target.name]: e.target.value,
+      employee_id: e.target.value,
+      employee_name: selectedEmployee ? selectedEmployee.name : "",
     });
   };
 
@@ -75,10 +96,12 @@ function Paie() {
                       padding: "10px",
                     }}
                   >
-                    <option value="employes">Selectionner un employés</option>
-                    <option value="employes0">Employés 0</option>
-                    <option value="employes1">Employés 1</option>
-                    <option value="employes2">Employés 2</option>
+                    <option value="">Sélectionner un employé</option>
+                    {employees.map((employee) => (
+                      <option key={employee.id} value={employee.id}>
+                        {employee.name}
+                      </option>
+                    ))}
                   </select>
                 </div>
                 <div
@@ -91,6 +114,7 @@ function Paie() {
                   <label>Mois</label>
                   <input
                     type="text"
+                    name="mois"
                     value={formData.mois}
                     onChange={handleChange}
                     style={{
@@ -111,6 +135,7 @@ function Paie() {
                   <label>Du</label>
                   <input
                     type="date"
+                    name="du"
                     value={formData.du}
                     onChange={handleChange}
                     style={{ width: "60%", padding: "10px" }}
@@ -126,6 +151,7 @@ function Paie() {
                   <label>Au</label>
                   <input
                     type="date"
+                    name="au"
                     value={formData.au}
                     onChange={handleChange}
                     style={{ width: "60%", padding: "10px" }}
@@ -141,6 +167,7 @@ function Paie() {
                   <label>date d'embauche</label>
                   <input
                     type="date"
+                    name="date_embauche"
                     value={formData.date_embauche}
                     onChange={handleChange}
                     style={{ width: "60%", padding: "10px" }}
@@ -155,7 +182,8 @@ function Paie() {
                 >
                   <label>Salaire de base</label>
                   <input
-                    type="text"
+                    type="number"
+                    name="salaire_base"
                     value={formData.salaire_base}
                     onChange={handleChange}
                     style={{ width: "60%", padding: "10px" }}
