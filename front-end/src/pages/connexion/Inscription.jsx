@@ -38,7 +38,7 @@ function Inscription() {
           </div>
           {error && <div className="alert alert-danger">{error}</div>}
           <button type="submit" style={{ background: '#2d2e5c',border:'none' }} className="btn btn-primary mt-4">S'inscrire</button> <br />
-          <span style={{ color: '#2d2e5c' }}>Vous disposez d'un compte , cliquez ici <Link to="/connexion">Se connecter</Link></span>
+          <span style={{ color: '#2d2e5c' }}>Vous disposez d'un compte , cliquez ici <Link to="/">Se connecter</Link></span>
         </form>
       </div>
     </div>

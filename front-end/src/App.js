@@ -2,7 +2,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './App.css';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import Navbar from './components/dashbord/Navbar';
 import Home from './pages/admin/Home';
 import Sidebar from './components/dashbord/Sidebar';
@@ -22,17 +22,13 @@ import GrantLeave from './components/CongesComponents copy/GrantLeave/GrantLeave
 import Inscription from './pages/connexion/Inscription';
 import Logout from './pages/connexion/Deconection';
 
-// Fonction principale de l'application
 function App() {
-  // Composant pour les routes protégées
   function ProtectedRoute({ children }) {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("access_token");
     if (!token) {
-      // Utilisateur non authentifié, redirection vers la page de connexion
       return <Navigate to="/connexion" />;
     }
-    // Utilisateur authentifié, rendu du composant enfant
-    return children;
+    return <Template sidebar={<Sidebar />} navbar={<Navbar />}>{children}</Template>;
   }
 
   return (
@@ -40,26 +36,23 @@ function App() {
       <Routes>
         <Route path='connexion' element={<Connexion />} />
         <Route path='inscription' element={<Inscription />} />
+        
+        <Route element={<ProtectedRoute />}>
+          <Route path="/" element={<Home />} />
+          <Route path='employes' element={<Employes />} />
+          <Route path='conges'>
+            <Route index element={<PendingLeaves />} />
+            <Route path="approved-leaves" element={<ApprovedLeaves />} />
+            <Route path="total-leaves" element={<TotalLeaves />} />
+            <Route path="leave-type" element={<LeaveTypeSection />} />
+            <Route path="view-employees" element={<GrantLeave />} />
+          </Route>
+          <Route path='presence' element={<Presence />} />
+          <Route path='notes' element={<Notes />} />
+          <Route path='payment' element={<Paie />} />
+          <Route path='rapport' element={<Rapport />} />
+        </Route>
       </Routes>
-      <ProtectedRoute>
-        <Template sidebar={<Sidebar />} navbar={<Navbar />}>
-          <Routes>
-            <Route index element={<Home />} />
-            <Route path='employes' element={<Employes />} />
-            <Route path='conges' element={<Conges />}>
-              <Route index element={<PendingLeaves />} />
-              <Route path="approved-leaves" element={<ApprovedLeaves />} />
-              <Route path="total-leaves" element={<TotalLeaves />} />
-              <Route path="leave-type" element={<LeaveTypeSection />} />
-              <Route path="view-employees" element={<GrantLeave />} />
-            </Route>
-            <Route path='presence' element={<Presence />} />
-            <Route path='notes' element={<Notes />} />
-            <Route path='payment' element={<Paie />} />
-            <Route path='rapport' element={<Rapport />} />
-          </Routes>
-        </Template>
-      </ProtectedRoute>
     </BrowserRouter>
   );
 }

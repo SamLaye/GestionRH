@@ -21,8 +21,17 @@ function Connexion() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://127.0.0.1:8000/api/auth/login", { email, password });
-      navigate("/");  
+      const response= await axios.post("http://127.0.0.1:8000/api/auth/login", { email, password });
+      console.log(response.data);
+      if (response.data.access_token) {
+        // Stockez le token dans le stockage local
+        localStorage.setItem('access_token', response.data.access_token);
+        
+        // Redirigez l'utilisateur vers la page d'accueil après une connexion réussie
+        navigate("/");
+      } else {
+        setError('Erreur de connexion: aucun jeton d\'accès renvoyé par le serveur');
+      }
     } catch (error) {
       if (error.response) {
         setError(error.response.data.message);

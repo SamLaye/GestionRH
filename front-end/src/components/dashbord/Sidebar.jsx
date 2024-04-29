@@ -13,7 +13,20 @@ import axios from "axios";
 function Sidebar() {
   const navigate = useNavigate();
   const [isAdmin, setIsAdmin] = useState(true);
-
+  const access_token = localStorage.getItem('access_token');
+  console.log('Access token:', access_token);
+  const handleLogout = async () => {
+    try {
+      await axios.post('http://localhost:8000/api/auth/logout', {}, {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      });
+      navigate('/connexion');
+    } catch (error) {
+      console.error( error);
+    }
+  };
   const admin = [
     {
       path: "/",
@@ -53,6 +66,7 @@ function Sidebar() {
     {
       icone: <PiSignOutBold className="icon" />,
       _label: "Déconnexion",
+      action: handleLogout
     },
   ];
   const employee = [
@@ -76,20 +90,14 @@ function Sidebar() {
       icone: <IoTimeOutline className="icon" />,
       _label: "Horaires et Présences",
     },
-    {path: "logout",
+    {
       icone: <PiSignOutBold className="icon" />,
       _label: "Déconnexion",
+      action: handleLogout
     },
   ];
 
-  const handleLogout = async () => {
-    try {
-      await axios.post('/api/auth/logout');
-      navigate('/connexion');
-    } catch (error) {
-      console.error('Erreur lors de la déconnexion :', error);
-    }
-  };
+  
 
   return (
     <>
@@ -99,22 +107,29 @@ function Sidebar() {
       </div>
 
       <ul className="sidebar-list">
-        {isAdmin
-          ? admin.map((item) => (
-            <NavLink to={item.path} onClick={item.path === 'logout' ? handleLogout : null} style={{ textDecoration: "none" }}>
-              <li className="sidebar-list-item">
-                {item.icone} {item._label}
-              </li>
-            </NavLink>
-          ))
-          : employee.map((item) => (
-            <NavLink to={item.path} style={{ textDecoration: "none" }}>
-              <li className="sidebar-list-item">
-                {item.icone} {item._label}
-              </li>
-            </NavLink>
-          ))}
-      </ul>
+  {isAdmin
+    ? admin.map((item, index) => (
+        // Utilisez un bouton ou une div pour la déconnexion au lieu de NavLink
+        item._label === "Déconnexion" ? (
+          <li key={index} className="sidebar-list-item" onClick={item.action}>
+            {item.icone} {item._label}
+          </li>
+        ) : (
+          <NavLink to={item.path} key={index} style={{ textDecoration: "none" }}>
+            <li className="sidebar-list-item">
+              {item.icone} {item._label}
+            </li>
+          </NavLink>
+        )
+      ))
+    : employee.map((item, index) => (
+        <NavLink to={item.path} key={index} style={{ textDecoration: "none" }}>
+          <li className="sidebar-list-item">
+            {item.icone} {item._label}
+          </li>
+        </NavLink>
+      ))}
+</ul>
     </>
   );
 }
