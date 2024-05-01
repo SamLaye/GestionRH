@@ -84,25 +84,7 @@ function Paie() {
                   }}
                 >
                   <label>Employé</label>
-                  <select
-                    id="employee_id"
-                    name="employee_id"
-                    value={formData.employee_id}
-                    onChange={handleChange}
-                    style={{
-                      display: "flex",
-                      alignSelf: "flex-end",
-                      width: "60%",
-                      padding: "10px",
-                    }}
-                  >
-                    <option value="">Sélectionner un employé</option>
-                    {employees.map((employee) => (
-                      <option key={employee.id} value={employee.id}>
-                        {employee.name}
-                      </option>
-                    ))}
-                  </select>
+                  bvnykulm!gn
                 </div>
                 <div
                   style={{
